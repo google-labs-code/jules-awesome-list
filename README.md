@@ -51,6 +51,9 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+- `// Generate a shell script to automate {a specific} workflow...` 
+  <sub>For automating repetitive tasks in any project.</sub>
+
 
 
 ## Debugging
@@ -76,6 +79,9 @@
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
 
+- `// Add error handling to {a specific} function`
+  <sub>Improves reliability by catching and reporting exceptions.</sub>
+
 
 ## Documentation
 
@@ -90,6 +96,12 @@
 
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
+
+- `// Generate a changelog entry for {a specific} feature`
+  <sub>Keeps project history clear and up to date.</sub>
+
+- `// Create a code example for {a specific} API method`
+  <sub>Makes documentation more actionable for users.</sub>
 
 
 
@@ -159,6 +171,9 @@
 
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
+
+- `// Generate a summary of this codebase's architecture`
+  <sub>Helps new contributors understand the project structure.</sub>
 
 
 
