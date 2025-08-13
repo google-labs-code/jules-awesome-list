@@ -160,7 +160,14 @@
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
 
+- `// Analyze code complexity and suggest architectural improvements`
+<sub>Technical debt assessment</sub>
 
+- `// Generate comprehensive API documentation from code`
+<sub>Documentation automation</sub>
+
+- `// Identify potential security vulnerabilities in this codebase`
+<sub>Proactive security auditing</sub>
 
 ## Context
 
