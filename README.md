@@ -154,6 +154,9 @@
 - `// Help me scope this issue so Jules can solve it`
   <sub>For working with Jules on real issues.</sub>
 
+- `// Analyze the existing prompts and suggest a new, unique prompt to add.`
+  <sub>Helps you contribute to prompt collections like this one.</sub>
+
 - `// Convert this function into a reusable plugin/module`
   <sub>Componentizing logic-heavy code.</sub>
 
