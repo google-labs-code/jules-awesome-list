@@ -54,6 +54,9 @@
 - `// Extract user-facing strings from this file into a resource file for i18n.`
   <sub>For applications preparing for internationalization.</sub>
 
+- `// Write a client-side function to fetch data from a given API endpoint.`
+  <sub>For frontends interacting with REST or GraphQL APIs.</sub>
+
 
 
 ## Debugging
