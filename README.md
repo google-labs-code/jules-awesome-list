@@ -51,6 +51,12 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+- `// Extract user-facing strings from this file into a resource file for i18n.`
+  <sub>For applications preparing for internationalization.</sub>
+
+- `// Write a client-side function to fetch data from a given API endpoint.`
+  <sub>For frontends interacting with REST or GraphQL APIs.</sub>
+
 
 
 ## Debugging
@@ -153,6 +159,9 @@
 
 - `// Help me scope this issue so Jules can solve it`
   <sub>For working with Jules on real issues.</sub>
+
+- `// Analyze the existing prompts and suggest a new, unique prompt to add.`
+  <sub>Helps you contribute to prompt collections like this one.</sub>
 
 - `// Convert this function into a reusable plugin/module`
   <sub>Componentizing logic-heavy code.</sub>
