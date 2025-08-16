@@ -51,6 +51,9 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+- `// Extract user-facing strings from this file into a resource file for i18n.`
+  <sub>For applications preparing for internationalization.</sub>
+
 
 
 ## Debugging
