@@ -20,6 +20,7 @@
 - [Documentation](#documentation)
 - [Testing](#testing)
 - [Package Management](#package-management)
+- [Security](#security)
 - [AI-Native Tasks](#ai-native-tasks)
 - [Context](#context)
 - [Fun \& Experimental](#fun--experimental)
@@ -50,6 +51,12 @@
 
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
+
+- `// Extract user-facing strings from this file into a resource file for i18n.`
+  <sub>For applications preparing for internationalization.</sub>
+
+- `// Write a client-side function to fetch data from a given API endpoint.`
+  <sub>For frontends interacting with REST or GraphQL APIs.</sub>
 
 
 
@@ -116,6 +123,9 @@
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
 
+- `// Write a failing test case that reproduces {a specific bug description}.`
+  <sub>For test-driven development (TDD) and bug fixing.</sub>
+
 
 
 ## Package Management
@@ -137,6 +147,31 @@
 
 
 
+## Security
+
+- `// Scan this code for common security vulnerabilities (e.g., SQL injection, XSS).`
+  <sub>For identifying potential security risks in application code.</sub>
+
+- `// Check my dependencies for known security advisories.`
+  <sub>Essential for maintaining a secure supply chain.</sub>
+
+- `// Add input validation to this function to prevent common exploits.`
+  <sub>A fundamental practice to protect against malicious data injection.</sub>
+
+- `// Replace this hard-coded secret with a reference to an environment variable or a secret manager.`
+  <sub>Best practice for managing API keys, passwords, and other secrets.</sub>
+
+- `// Implement a check to ensure the current user has the 'admin' role before executing this action.`
+  <sub>For adding role-based access control (RBAC) and authorization logic.</sub>
+
+- `// Refactor this password storage logic to use a strong, salted hashing algorithm like Argon2 or bcrypt.`
+  <sub>Crucial for protecting user credentials in databases.</sub>
+
+- `// Review this logging statement and mask any personally identifiable information (PII).`
+  <sub>For preventing sensitive data leaks through logs.</sub>
+
+
+
 ## AI-Native Tasks
 
 - `// Analyze this repo and generate 3 feature ideas`
@@ -153,6 +188,9 @@
 
 - `// Help me scope this issue so Jules can solve it`
   <sub>For working with Jules on real issues.</sub>
+
+- `// Analyze the existing prompts and suggest a new, unique prompt to add.`
+  <sub>Helps you contribute to prompt collections like this one.</sub>
 
 - `// Convert this function into a reusable plugin/module`
   <sub>Componentizing logic-heavy code.</sub>
