@@ -20,6 +20,7 @@
 - [Documentation](#documentation)
 - [Testing](#testing)
 - [Package Management](#package-management)
+- [Security](#security)
 - [AI-Native Tasks](#ai-native-tasks)
 - [Context](#context)
 - [Fun \& Experimental](#fun--experimental)
@@ -143,6 +144,31 @@
 
 - `// Set up Renovate or Dependabot for auto-updates`
   <sub>Best for active projects with CI/CD.</sub>
+
+
+
+## Security
+
+- `// Scan this code for common security vulnerabilities (e.g., SQL injection, XSS).`
+  <sub>For identifying potential security risks in application code.</sub>
+
+- `// Check my dependencies for known security advisories.`
+  <sub>Essential for maintaining a secure supply chain.</sub>
+
+- `// Add input validation to this function to prevent common exploits.`
+  <sub>A fundamental practice to protect against malicious data injection.</sub>
+
+- `// Replace this hard-coded secret with a reference to an environment variable or a secret manager.`
+  <sub>Best practice for managing API keys, passwords, and other secrets.</sub>
+
+- `// Implement a check to ensure the current user has the 'admin' role before executing this action.`
+  <sub>For adding role-based access control (RBAC) and authorization logic.</sub>
+
+- `// Refactor this password storage logic to use a strong, salted hashing algorithm like Argon2 or bcrypt.`
+  <sub>Crucial for protecting user credentials in databases.</sub>
+
+- `// Review this logging statement and mask any personally identifiable information (PII).`
+  <sub>For preventing sensitive data leaks through logs.</sub>
 
 
 
