@@ -51,6 +51,10 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+- `// Add loading skeletons for API calls in this React component...`
+  <sub>Improves user experience while waiting for data.</sub>
+
+
 
 
 ## Debugging
@@ -75,6 +79,9 @@
 
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
+
+  - `// Trace Redis pub/sub message flow to detect dropped events...` 
+  <sub>Useful for real-time apps with WebSockets or queues.</sub>
 
 
 ## Documentation
@@ -115,6 +122,10 @@
 
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
+
+  
+- `// Write end-to-end tests for this React form using Playwright...` 
+  <sub>Ensures full flow coverage from input to API call.</sub>
 
 
 
@@ -160,6 +171,8 @@
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
 
+- `// Suggest optimizations to make this function easier for an AI agent to debug automatically...` 
+  <sub>Helps integrate AI-native dev tools like DebugBridge.</sub>
 
 
 ## Context
@@ -209,7 +222,8 @@
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
 
-
+- `// Bootstrap a WebSocket server with Express and Socket.IO...` 
+  <sub>Useful for real-time collaboration tools.</sub>
 
 ## Contributing
 
