@@ -76,6 +76,9 @@
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
 
+- `// Optimize this code for better performance and lower resource usage`
+  <sub>Identifies bottlenecks and suggests improvements for CPU, memory, or I/O-bound operations.</sub>
+
 
 ## Documentation
 
@@ -91,6 +94,8 @@
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
 
+- `// Generate OpenAPI/Swagger documentation for this API`
+  <sub>Creates comprehensive API documentation from code comments and routes.</sub>
 
 
 ## Testing
@@ -138,6 +143,12 @@
 
 
 ## AI-Native Tasks
+
+- `// Analyze this repository's structure and suggest architectural improvements`
+  <sub>Provides a comprehensive codebase assessment including architecture, code quality, testing, and security considerations.</sub>
+
+- `// Perform a security audit of this code and suggest improvements`
+  <sub>Identifies potential security vulnerabilities and suggests best practices for secure coding.</sub>
 
 - `// Analyze this repo and generate 3 feature ideas`
   <sub>Vision-stage or greenfield products.</sub>
