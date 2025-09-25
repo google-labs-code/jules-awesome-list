@@ -1,0 +1,15 @@
+name: Binder OCI Workflow
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run cosign
+      run: |
+        cosign sign --yes --tlog-upload=true --rekor-url https://rekor.sigstore.dev "$REF" \
+        --bundle binder/EX11_binder_oci/binder.cosign.bundle.json

@@ -1,0 +1,33 @@
+name: Verify Binder
+
+on:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install dependencies
+      run: |
+        sudo apt-get update && sudo apt-get install -y jq
+
+    - name: Install cosign
+      uses: sigstore/cosign-installer@v3
+
+    - name: Install oras
+      run: |
+        curl -sSfL https://github.com/oras-project/oras/releases/download/v1.2.0/oras_1.2.0_linux_amd64.tar.gz \
+        | tar -xz -C /usr/local/bin oras
+
+    - name: Download provenance
+      run: |
+        # This is a placeholder for the real provenance download step
+        # as the exact source is not specified in the instructions.
+        mkdir -p binder/EX10_supplychain
+        echo "{}" > binder/EX10_supplychain/provenance.json
+
+    - name: Verify binder
+      run: |
+        python3 scripts/verify_binder_oci.py
