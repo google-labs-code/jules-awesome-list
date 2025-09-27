@@ -51,6 +51,9 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+- `// Explain what {a new technology} is and how to get started with it...`
+  <sub>Useful for quickly learning about new tools, libraries, or frameworks.</sub>
+
 
 
 ## Debugging
