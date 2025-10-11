@@ -40,42 +40,34 @@ The bot is built on the `python-telegram-bot` library and uses a modular archite
     └── handlers.py       # Contains all Telegram command and conversation logic
 ```
 
-## Setup & Installation
+## Setup & Installation (Automated)
 
-This project is designed to be run in an environment like Google Colab where `ngrok` can expose the webhook.
+This project includes an automated setup script to simplify the installation and configuration process.
 
 ### 1. Prerequisites
+- Python 3.8 or higher.
 - A Telegram Bot Token from BotFather.
-- A Google Cloud Project with a **Service Account JSON file** (for Google Sheets).
-- A **Google Gemini API Key**.
+- A Google Gemini API Key.
 - An `ngrok` authentication token.
+- Your Google `service_account.json` file.
 
-### 2. Configuration
-- **Colab Secrets:** The most secure way to run this is by using Google Colab's "Secrets" (🔑 icon on the left). Add the following secrets:
-    - `BOT_TOKEN`: Your Telegram Bot Token.
-    - `GEMINI_API_KEY`: Your Google Gemini API Key.
-    - `SERVICE_ACCOUNT_JSON_PATH`: The *full path* to your uploaded `service_account.json` file in your Colab environment (e.g., `/content/service_account.json`).
-    - `NGROK_AUTHTOKEN`: Your authentication token from the ngrok dashboard.
-    - `ADMIN_CHAT_ID`: The numeric chat ID for receiving admin notifications.
-- **Upload Service Account File**: Upload your `service_account.json` file to your Colab instance. Make sure the path matches what you put in the `SERVICE_ACCOUNT_JSON_PATH` secret.
+### 2. Automated Setup
+1.  **Place Service Account File**: Put your `service_account.json` file in the root directory of this project.
+2.  **Run the Setup Script**: Open your terminal in the project's root directory and run the following command:
+    ```bash
+    python setup.py
+    ```
+3.  **Follow the Prompts**: The script will guide you through an interactive setup process:
+    - It will first install all the required Python dependencies from `requirements.txt`.
+    - It will then ask you to enter your API keys and tokens (`BOT_TOKEN`, `GEMINI_API_KEY`, `NGROK_AUTHTOKEN`, `ADMIN_CHAT_ID`).
+    - After you provide the details, it will automatically create a `.env` file in the project root to securely store your configuration.
 
-### 3. Installation
-Run this command in a cell to install all necessary Python libraries:
+### 3. Running the Bot
+Once the setup is complete, you can run the bot at any time with this command:
 ```bash
-!pip install -r requirements.txt
+python main.py
 ```
-
-### 4. Running the Bot
-Execute the main script in a Colab cell:
-```bash
-!python main.py
-```
-The script will perform the following actions:
-1.  **Database Setup**: It ensures the `hotel_os.db` SQLite database file and all necessary tables are created.
-2.  **Handler Registration**: It registers all the conversation and command handlers defined in `bot/handlers.py`.
-3.  **Ngrok Tunnel**: It starts an `ngrok` tunnel to create a public URL that Telegram's servers can send updates to.
-4.  **Webhook Configuration**: It sets the Telegram bot's webhook to the newly created public `ngrok` URL.
-5.  **Start Listening**: It starts the bot, which will now listen for incoming messages and updates from Telegram. You will see a `Bot is running!` message with the public URL.
+The bot will use the configuration from your `.env` file to start, set up the database, and begin listening for messages.
 
 ## Bot Commands and User Flows
 

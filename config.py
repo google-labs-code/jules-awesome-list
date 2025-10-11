@@ -20,19 +20,22 @@ Attributes:
 """
 
 import os
-from google.colab import userdata
 import logging
+from dotenv import load_dotenv
+
+# Load environment variables from a .env file if it exists
+# This is the primary method for local development.
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 
 
 def get_secret(secret_name: str, default: str = None) -> str | None:
-    """Safely retrieves a secret from Colab userdata or environment variables.
+    """Safely retrieves a secret from environment variables, with a fallback to Colab.
 
-    This function first attempts to load a secret from Google Colab's `userdata`
-    store. If it's not found or an error occurs, it falls back to loading
-    from the environment variables. This makes the bot adaptable to different
-    deployment environments.
+    This function prioritizes secrets loaded from a `.env` file (via `os.environ`).
+    If a secret is not found in the environment, it attempts to load it from
+    Google Colab's `userdata` store as a secondary option.
 
     Args:
         secret_name (str): The name of the secret to retrieve (e.g., "BOT_TOKEN").
@@ -42,24 +45,30 @@ def get_secret(secret_name: str, default: str = None) -> str | None:
     Returns:
         str | None: The retrieved secret value, or the default value if not found.
     """
-    try:
-        # Prioritize Colab userdata
-        value = userdata.get(secret_name)
-        if value and value != default:
-            logger.info(f"Successfully loaded '{secret_name}' from Colab Secrets.")
-            return value
-    except userdata.SecretNotFoundError:
-        pass # Fallback to environment variable
-    except Exception as e:
-        logger.warning(f"Error loading '{secret_name}' from Colab Secrets: {e}")
-
-    # Fallback to environment variable
+    # Prioritize environment variables (loaded from .env file)
     value = os.environ.get(secret_name)
     if value and value != default:
         logger.info(f"Successfully loaded '{secret_name}' from environment variables.")
         return value
 
-    logger.warning(f"'{secret_name}' not found in Colab Secrets or environment variables. Using default/placeholder value.")
+    # Fallback to Colab userdata for compatibility
+    try:
+        from google.colab import userdata
+        value = userdata.get(secret_name)
+        if value and value != default:
+            logger.info(f"Successfully loaded '{secret_name}' from Colab Secrets.")
+            return value
+    except (ImportError, ModuleNotFoundError):
+        # Handle cases where google.colab is not installed
+        pass
+    except userdata.SecretNotFoundError:
+        # Handle cases where the secret is not in Colab
+        pass
+    except Exception as e:
+        logger.warning(f"Error loading '{secret_name}' from Colab Secrets: {e}")
+
+
+    logger.warning(f"'{secret_name}' not found in any source. Using default/placeholder value.")
     return default
 
 # --- Telegram Configuration ---
