@@ -1,219 +1,127 @@
-<p align="center">
-  <img src="assets/jules-readme.png" alt="Jules Awesome List" width="600">
-</p>
+# คู่มือการติดตั้งและใช้งาน Smart BMS บน Google App Script
 
-<div align="center">
-  <h1>Awesome Jules Prompts 🌟</h1>
-  <p>Curated prompts for Jules, an async coding agent from Google Labs.</p>
-  <br>
-  <a href="https://jules.google.com">Visit Jules</a> •
-  <a href="#contributing">Contribute</a>
-</div>
+เอกสารนี้จะแนะนำขั้นตอนทั้งหมดในการตั้งค่าระบบบริหารจัดการอัจฉริยะ (Smart BMS) ตั้งแต่ต้นจนจบ เพื่อให้คุณสามารถนำไปใช้งานจริงได้ทันที
 
----
-
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Everyday Dev Tasks](#everyday-dev-tasks)
-- [Debugging](#debugging)
-- [Documentation](#documentation)
-- [Testing](#testing)
-- [Package Management](#package-management)
-- [AI-Native Tasks](#ai-native-tasks)
-- [Context](#context)
-- [Fun \& Experimental](#fun--experimental)
-- [Start from Scratch](#start-from-scratch)
-- [Contributing](#contributing)
+## สารบัญ
+1.  [ขั้นตอนที่ 1: การเตรียม Google Sheet (ฐานข้อมูล)](#ขั้นตอนที่-1-การเตรียม-google-sheet-ฐานข้อมูล)
+2.  [ขั้นตอนที่ 2: การตั้งค่าโปรเจกต์ Google App Script](#ขั้นตอนที่-2-การตั้งค่าโปรเจกต์-google-app-script)
+3.  [ขั้นตอนที่ 3: การสร้าง Discord Bot และ الحصول على Token](#ขั้นตอนที่-3-การสร้าง-discord-bot-และ- الحصول-على-token)
+4.  [ขั้นตอนที่ 4: การนำโค้ดไปใช้งานและการตั้งค่า Webhook](#ขั้นตอนที่-4-การนำโค้ดไปใช้งานและการตั้งค่า-webhook)
+5.  [ขั้นตอนที่ 5: การกำหนดค่าเริ่มต้นในชีต `Config`](#ขั้นตอนที่-5-การกำหนดค่าเริ่มต้นในชีต-config)
 
 ---
 
-## Everyday Dev Tasks
-
-- `// Refactor {a specific} file from {x} to {y}...`
-  <sub>General-purpose, applies to any language or repo.</sub>
-
-- `// Add a test suite...`
-  <sub>Useful for repos lacking test coverage.</sub>
-
-- `// Add type hints to {a specific} Python function...`
-  <sub>Python codebases transitioning to typed code.</sub>
-
-- `// Generate mock data for {a specific} schema...`
-  <sub>APIs, frontends, or test-heavy environments.</sub>
-
-- `// Convert these commonJS modules to ES modules...`
-  <sub>JS/TS projects modernizing legacy code.</sub>
-
-- `// Turn this callback-based code into async/await...`
-  <sub>JavaScript or Python codebases improving async logic.</sub>
-
-- `// Implement a data class for this dictionary structure...`
-  <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
-
-
-
-## Debugging
-
-- `// Help me fix {a specific} error...`
-  <sub>For any repo where you're stuck on a runtime or build error.</sub>
-
-- `// Why is {this specific snippet of code} slow?`
-  <sub>Performance profiling for loops, functions, or queries.</sub>
-
-- `// Trace why this value is undefined...`
-  <sub>Frontend and backend JS/TS bugs.</sub>
-
-- `// Diagnose this memory leak...`
-  <sub>Server-side apps or long-running processes.</sub>
-
-- `// Add logging to help debug this issue...`
-  <sub>Useful when troubleshooting silent failures.</sub>
-
-- `// Find race conditions in this async code`
-  <sub>Concurrent systems in JS, Python, Go, etc.</sub>
-
-- `// Add print statements to trace the execution flow of this Python script...`
-  <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
-
-
-## Documentation
-
-- `// Write a README for this project`
-  <sub>Any repo lacking a basic project overview.</sub>
-
-- `// Add comments to this code`
-  <sub>Improves maintainability of complex logic.</sub>
-
-- `// Write API docs for this endpoint`
-  <sub>REST or GraphQL backends.</sub>
-
-- `// Generate Sphinx-style docstrings for this Python module/class/function...`
-  <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
-
-
-
-## Testing
-
-- `// Add integration tests for this API endpoint`
-  <sub>Express, FastAPI, Django, Flask apps.</sub>
-
-- `// Write a test that mocks fetch`
-  <sub>Browser-side fetch or axios logic.</sub>
-
-- `// Convert this test from Mocha to Jest`
-  <sub>JS test suite migrations.</sub>
-
-- `// Generate property-based tests for this function`
-  <sub>Functional or logic-heavy code.</sub>
-
-- `// Simulate slow network conditions in this test suite`
-  <sub>Web and mobile apps.</sub>
-
-- `// Write a test to ensure backward compatibility for this function`
-  <sub>Library or SDK maintainers.</sub>
-
-- `// Write a Pytest fixture to mock this external API call...`
-  <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
-
-
-
-## Package Management
-
-- `// Upgrade my linter and autofix breaking config changes`
-  <sub>JS/TS repos using ESLint or Prettier.</sub>
-
-- `// Show me the changelog for React 19`
-  <sub>Web frontend apps using React.</sub>
-
-- `// Which dependencies can I safely remove?`
-  <sub>Bloated or legacy codebases.</sub>
-
-- `// Check if these packages are still maintained`
-  <sub>Security-conscious or long-term projects.</sub>
-
-- `// Set up Renovate or Dependabot for auto-updates`
-  <sub>Best for active projects with CI/CD.</sub>
-
-
-
-## AI-Native Tasks
-
-- `// Analyze this repo and generate 3 feature ideas`
-  <sub>Vision-stage or greenfield products.</sub>
-
-- `// Identify tech debt in this file`
-  <sub>Codebases with messy or fragile logic.</sub>
-
-- `// Find duplicate logic across files`
-  <sub>Sprawling repos lacking DRY practices.</sub>
-
-- `// Cluster related functions and suggest refactors`
-  <sub>Projects with lots of utils or helpers.</sub>
-
-- `// Help me scope this issue so Jules can solve it`
-  <sub>For working with Jules on real issues.</sub>
-
-- `// Convert this function into a reusable plugin/module`
-  <sub>Componentizing logic-heavy code.</sub>
-
-- `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
-  <sub>For optimizing performance in computationally intensive Python applications.</sub>
-
-
-
-## Context
-
-- `// Write a status update based on recent commits`
-  <sub>Managerial and async communication.</sub>
-
-- `// Summarize all changes in the last 7 days`
-  <sub>Catching up after time off.</sub>
-
-
-
-## Fun & Experimental
-
-- `// Add a confetti animation when {a specific} action succeeds`
-  <sub>Frontend web apps with user delight moments.</sub>
-
-- `// Inject a developer joke when {a specific} build finishes`
-  <sub>Personal projects or team tools.</sub>
-
-- `// Build a mini CLI game that runs in the terminal`
-  <sub>For learning or community fun.</sub>
-
-- `// Add a dark mode Easter egg to this UI`
-  <sub>Design-heavy frontend projects.</sub>
-
-- `// Turn this tool into a GitHub App`
-  <sub>Reusable, platform-integrated tools.</sub>
-
-## Start from Scratch
-
-- `// What's going on in this repo?`
-  <sub>Great for legacy repos or onboarding onto unfamiliar code.</sub>
-
-- `// Initialize a new Express app with CORS enabled`
-  <sub>Web backend projects using Node.js and Express.</sub>
-
-- `// Set up a monorepo using Turborepo and PNPM`
-  <sub>Multi-package JS/TS projects with shared dependencies.</sub>
-
-- `// Bootstrap a Python project with Poetry and Pytest`
-  <sub>Python repos aiming for clean dependency and test setup.</sub>
-
-- `// Create a starter template for a Chrome extension`
-  <sub>Browser extension development.</sub>
-
-- `// I want to build a web scraper—start me off`
-  <sub>Data scraping or automation tools using Python/Node.</sub>
-
-
-
-## Contributing
-
-Your contributions are welcome! Add new prompts, fix formatting, or suggest categories.
-
-- 📄 [Contributing Guide](contributing.md)
-- 🪄 Open a [Pull Request](https://github.com/YOUR_REPO/pulls)
+### ขั้นตอนที่ 1: การเตรียม Google Sheet (ฐานข้อมูล)
+
+1.  **สร้าง Google Sheet ใหม่:**
+    *   ไปที่ [Google Sheets](https://sheets.new) และสร้างไฟล์ใหม่
+    *   ตั้งชื่อไฟล์ตามที่คุณต้องการ (เช่น "Smart BMS Database")
+    *   **คัดลอก URL ของไฟล์นี้เก็บไว้** คุณจะต้องใช้ในภายหลัง
+
+2.  **สร้างชีต (Sheets) ทั้ง 5 ชีต:**
+    *   ที่ด้านล่างของหน้าจอ, คลิกที่เครื่องหมายบวก (+) เพื่อสร้างชีตใหม่
+    *   สร้างชีตให้ครบ 5 ชีต และเปลี่ยนชื่อตามนี้ (สำคัญมาก ต้องตรงตามนี้ทุกตัวอักษร):
+        1.  `Config`
+        2.  `Tasks_Data`
+        3.  `Personnel_Data`
+        4.  `Financial_Data`
+        5.  `Templates`
+
+3.  **ตั้งค่าหัวข้อ (Headers) ในแต่ละชีต:**
+    *   **ชีต `Config`:**
+        *   คอลัมน์ A: `Setting`
+        *   คอลัมน์ B: `Value`
+    *   **ชีต `Tasks_Data`:**
+        *   `Task_ID`, `Date_Created`, `Date_Due`, `Work_Type`, `Status`, `Assigned_User_ID`, `Description`, `Priority`
+    *   **ชีต `Personnel_Data`:**
+        *   `User_ID`, `Name`, `Type`, `Role`, `Contact_Info`, `Historical_Notes`, `Rental_Unit_ID`
+    *   **ชีต `Financial_Data`:**
+        *   `Trans_ID`, `Type`, `Date`, `Amount`, `Associated_User_ID`, `Status`, `Calculation_Detail_JSON`
+    *   **ชีต `Templates`:**
+        *   `Template_Name`, `Template_Content`
+
+---
+
+### ขั้นตอนที่ 2: การตั้งค่าโปรเจกต์ Google App Script
+
+1.  **เปิด Google App Script Editor:**
+    *   จากไฟล์ Google Sheet ที่คุณสร้าง, ไปที่ `ส่วนขยาย (Extensions)` > `Apps Script`
+    *   ระบบจะเปิดหน้าต่างใหม่สำหรับเขียนโค้ด
+
+2.  **ตั้งชื่อโปรเจกต์:**
+    *   คลิกที่ "Untitled project" และตั้งชื่อโปรเจกต์ของคุณ (เช่น "Smart BMS Bot Logic")
+
+3.  **ลบโค้ดเริ่มต้น:**
+    *   ในไฟล์ `Code.gs` ที่มีอยู่, ลบฟังก์ชัน `myFunction` ที่มีมาให้ทั้งหมด
+
+---
+
+### ขั้นตอนที่ 3: การสร้าง Discord Bot และ الحصول على Token
+
+1.  **ไปที่ Discord Developer Portal:**
+    *   เปิดเว็บเบราว์เซอร์และไปที่ [Discord Developer Portal](https://discord.com/developers/applications)
+    *   ล็อกอินด้วยบัญชี Discord ของคุณ
+
+2.  **สร้าง Application ใหม่:**
+    *   คลิกที่ปุ่ม `New Application` ที่มุมขวาบน
+    *   ตั้งชื่อ Bot ของคุณ (เช่น "BMS Bot") และคลิก `Create`
+
+3.  **ไปที่แท็บ "Bot":**
+    *   จากเมนูด้านซ้าย, เลือก `Bot`
+    *   คลิกที่ `Add Bot` > `Yes, do it!`
+
+4.  **คัดลอก Bot Token:**
+    *   ใต้ชื่อ Bot ของคุณ, คุณจะเห็นส่วน **TOKEN**
+    *   คลิกที่ `Copy` เพื่อคัดลอก Token และ **เก็บไว้ในที่ปลอดภัย** (สำคัญมาก: ห้ามเปิดเผย Token นี้ให้ใครเห็น)
+
+5.  **เชิญ Bot เข้า Server:**
+    *   ไปที่แท็บ `OAuth2` > `URL Generator`
+    *   ในส่วน `SCOPES`, เลือก `bot`
+    *   ในส่วน `BOT PERMISSIONS`, เลือกสิทธิ์ที่จำเป็น (แนะนำให้เลือก `Administrator` เพื่อความสะดวกในการทดสอบ)
+    *   คัดลอก URL ที่สร้างขึ้นด้านล่าง และนำไปวางในเบราว์เซอร์เพื่อเชิญ Bot เข้าสู่ Discord Server ของคุณ
+
+---
+
+### ขั้นตอนที่ 4: การนำโค้ดไปใช้งานและการตั้งค่า Webhook
+
+1.  **นำโค้ดทั้งหมดไปวางใน App Script:**
+    *   AI จะสร้างไฟล์โค้ด `.gs` ให้คุณทั้งหมด 8 ไฟล์
+    *   สำหรับแต่ละไฟล์:
+        *   ใน App Script Editor, คลิกที่เครื่องหมายบวก (+) > `สคริปต์`
+        *   ตั้งชื่อไฟล์ให้ตรงกับที่ AI สร้าง (เช่น `Main.gs`, `Sheet_Interface.gs`)
+        *   คัดลอกเนื้อหาโค้ดของแต่ละไฟล์มาวางให้ถูกต้อง
+
+2.  **ทำให้โปรเจกต์เป็น Web App:**
+    *   หลังจากวางโค้ดครบทุกไฟล์แล้ว, คลิกที่ `ทำให้ใช้งานได้ (Deploy)` > `การทำให้ใช้งานได้รายการใหม่ (New deployment)`
+    *   คลิกที่ไอคอนรูปเฟือง (⚙️) ข้างๆ "เลือกประเภท" และเลือก `เว็บแอป (Web app)`
+
+3.  **ตั้งค่า Web App:**
+    *   **คำอธิบาย (Description):** (ไม่บังคับ) ใส่คำอธิบายสั้นๆ
+    *   **เรียกใช้เป็น (Execute as):** `ฉัน (Me)`
+    *   **ผู้ที่มีสิทธิ์เข้าถึง (Who has access):** `ทุกคน (Anyone)` (สำคัญมากเพื่อให้ Discord ส่งข้อมูลมาได้)
+    *   คลิก `ทำให้ใช้งานได้ (Deploy)`
+
+4.  **ให้สิทธิ์การเข้าถึง:**
+    *   Google จะขอสิทธิ์ในการเข้าถึง Google Sheet และอื่นๆ
+    *   คลิก `ให้สิทธิ์เข้าถึง (Authorize access)`
+    *   เลือกบัญชี Google ของคุณ
+    *   อาจมีหน้าจอเตือนว่า "Google hasn't verified this app" ให้คลิกที่ `ขั้นสูง (Advanced)` > `ไปที่ [ชื่อโปรเจกต์ของคุณ] (unsafe)` และกด `Allow`
+
+5.  **คัดลอก Web App URL:**
+    *   หลังจาก Deploy สำเร็จ, คุณจะได้รับ **URL ของเว็บแอป**
+    *   **คัดลอก URL นี้เก็บไว้** นี่คือ Webhook URL ของคุณ
+
+---
+
+### ขั้นตอนที่ 5: การกำหนดค่าเริ่มต้นในชีต `Config`
+
+1.  **กลับไปที่ Google Sheet ของคุณ** และเปิดชีต `Config`
+2.  **ใส่ข้อมูลการตั้งค่าพื้นฐาน:**
+    *   ในคอลัมน์ A (Setting), แถวที่ 2, พิมพ์ `DISCORD_TOKEN`
+    *   ในคอลัมน์ B (Value), แถวที่ 2, วาง **Bot Token** ที่คุณคัดลอกมาจากขั้นตอนที่ 3
+    *   ในคอลัมน์ A, แถวที่ 3, พิมพ์ `SHEET_ID`
+    *   ในคอลัมน์ B, แถวที่ 3, วาง **ID ของ Google Sheet** (ไม่ใช่ URL เต็ม)
+        *   *วิธีหา SHEET_ID:* จาก URL ของ Google Sheet (`https://docs.google.com/spreadsheets/d/THIS_IS_THE_ID/edit`), คัดลอกเฉพาะส่วนที่อยู่ระหว่าง `/d/` และ `/edit`
+    *   ใส่ค่าอื่นๆ ที่จำเป็น เช่น `TAX_RATE`, `RENTAL_BASE_RATE` ตามต้องการ
+
+**ยินดีด้วย!** ตอนนี้ระบบ Smart BMS ของคุณพร้อมใช้งานแล้ว คุณสามารถเริ่มใช้คำสั่งต่างๆ ผ่าน Discord Bot ใน Server ของคุณได้เลย
