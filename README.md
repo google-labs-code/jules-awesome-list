@@ -5,10 +5,9 @@
 ## สารบัญ
 1.  [ขั้นตอนที่ 1: การเตรียม Google Sheet (ฐานข้อมูล)](#ขั้นตอนที่-1-การเตรียม-google-sheet-ฐานข้อมูล)
 2.  [ขั้นตอนที่ 2: การตั้งค่าโปรเจกต์ Google App Script](#ขั้นตอนที่-2-การตั้งค่าโปรเจกต์-google-app-script)
-3.  [ขั้นตอนที่ 3: (ทางเลือก) การสร้าง Discord Bot](#ขั้นตอนที่-3-ทางเลือก-การสร้าง-discord-bot)
-4.  [ขั้นตอนที่ 4: (ทางเลือก) การสร้าง Telegram Bot](#ขั้นตอนที่-4-ทางเลือก-การสร้าง-telegram-bot)
-5.  [ขั้นตอนที่ 5: การนำโค้ดไปใช้งานและรับ Webhook URL](#ขั้นตอนที่-5-การนำโค้ดไปใช้งานและรับ-webhook-url)
-6.  [ขั้นตอนที่ 6: การกำหนดค่าเริ่มต้นในชีต `Config`](#ขั้นตอนที่-6-การกำหนดค่าเริ่มต้นในชีต-config)
+3.  [ขั้นตอนที่ 3: การสร้าง Telegram Bot](#ขั้นตอนที่-3-การสร้าง-telegram-bot)
+4.  [ขั้นตอนที่ 4: การนำโค้ดไปใช้งานและรับ Webhook URL](#ขั้นตอนที่-4-การนำโค้ดไปใช้งานและรับ-webhook-url)
+5.  [ขั้นตอนที่ 5: การกำหนดค่าเริ่มต้นและตั้งค่า Webhook](#ขั้นตอนที่-5-การกำหนดค่าเริ่มต้นและตั้งค่า-webhook)
 
 ---
 
@@ -57,18 +56,7 @@
 
 ---
 
-### ขั้นตอนที่ 3: (ทางเลือก) การสร้าง Discord Bot
-
-1.  **ไปที่ Discord Developer Portal:**
-    *   เปิดเว็บเบราว์เซอร์และไปที่ [Discord Developer Portal](https://discord.com/developers/applications) และล็อกอิน
-2.  **สร้าง Application ใหม่:** คลิก `New Application`, ตั้งชื่อ, และ `Create`
-3.  **สร้าง Bot:** ไปที่แท็บ `Bot` > `Add Bot` > `Yes, do it!`
-4.  **คัดลอก Bot Token:** ใต้ชื่อ Bot, คลิก `Copy` เพื่อคัดลอก **Discord Token** และเก็บไว้
-5.  **เชิญ Bot เข้า Server:** ไปที่ `OAuth2` > `URL Generator`, เลือก `bot`, กำหนดสิทธิ์ (เช่น `Administrator`), และใช้ URL ที่สร้างขึ้นเพื่อเชิญบอท
-
----
-
-### ขั้นตอนที่ 4: (ทางเลือก) การสร้าง Telegram Bot
+### ขั้นตอนที่ 3: การสร้าง Telegram Bot
 
 1.  **เปิด Telegram และค้นหา "BotFather":** BotFather คือบอทอย่างเป็นทางการของ Telegram สำหรับสร้างและจัดการบอทอื่นๆ
 2.  **สร้าง Bot ใหม่:**
@@ -80,7 +68,7 @@
 
 ---
 
-### ขั้นตอนที่ 5: การนำโค้ดไปใช้งานและรับ Webhook URL
+### ขั้นตอนที่ 4: การนำโค้ดไปใช้งานและรับ Webhook URL
 
 1.  **นำโค้ดทั้งหมดไปวางใน App Script:** ทำตามขั้นตอนเดิมในการสร้างไฟล์ `.gs` ทั้งหมดในโปรเจกต์ App Script ของคุณ
 2.  **ทำให้โปรเจกต์เป็น Web App (Deploy):**
@@ -93,28 +81,20 @@
 
 ---
 
-### ขั้นตอนที่ 6: การกำหนดค่าเริ่มต้นในชีต `Config`
+### ขั้นตอนที่ 5: การกำหนดค่าเริ่มต้นและตั้งค่า Webhook
 
 1.  **กลับไปที่ Google Sheet** และเปิดชีต `Config`
 2.  **ใส่ข้อมูลการตั้งค่าพื้นฐาน:**
     *   **SHEET_ID:** วาง ID ของ Google Sheet ของคุณ
-    *   **DISCORD_TOKEN:** (ถ้าใช้) วาง Discord Token ที่คัดลอกมา
-    *   **TELEGRAM_BOT_TOKEN:** (ถ้าใช้) วาง Telegram Token ที่คัดลอกมา
+    *   **TELEGRAM_BOT_TOKEN:** วาง Telegram Token ที่คัดลอกมา
     *   ใส่ค่าอื่นๆ ที่จำเป็น เช่น `TAX_RATE`, `RENTAL_BASE_RATE`
 
-### ขั้นตอนที่ 7: การตั้งค่า Webhook สำหรับแต่ละแพลตฟอร์ม
+3.  **ตั้งค่า Webhook สำหรับ Telegram:**
+    *   คุณต้อง "ลงทะเบียน" Webhook URL ของคุณกับ Telegram API ด้วยตนเอง
+    *   สร้าง URL ตามรูปแบบนี้: `https://api.telegram.org/bot<YOUR_TELEGRAM_TOKEN>/setWebhook?url=<YOUR_WEB_APP_URL>`
+    *   **แทนที่ `<YOUR_TELEGRAM_TOKEN>`** ด้วย Token ของคุณ
+    *   **แทนที่ `<YOUR_WEB_APP_URL>`** ด้วย Web App URL ของคุณ
+    *   นำ URL ที่สร้างเสร็จแล้วไปวางในเบราว์เซอร์และกด Enter
+    *   หากสำเร็จ คุณจะเห็นข้อความ: `{"ok":true,"result":true,"description":"Webhook was set"}`
 
--   **สำหรับ Discord:**
-    -   กลับไปที่ [Discord Developer Portal](https://discord.com/developers/applications) และเลือก Application ของคุณ
-    -   ไปที่แท็บ `General Information`
-    -   ในช่อง `INTERACTIONS ENDPOINT URL`, **วาง Web App URL** ที่คุณคัดลอกมาจากขั้นตอนที่ 5 แล้วกด `Save Changes` Discord จะส่ง "ping" ไปเพื่อยืนยัน ซึ่งโค้ดของเรารองรับอยู่แล้ว
-
--   **สำหรับ Telegram:**
-    -   คุณต้อง "ลงทะเบียน" Webhook URL ของคุณกับ Telegram API ด้วยตนเอง
-    -   สร้าง URL ตามรูปแบบนี้: `https://api.telegram.org/bot<YOUR_TELEGRAM_TOKEN>/setWebhook?url=<YOUR_WEB_APP_URL>`
-    -   **แทนที่ `<YOUR_TELEGRAM_TOKEN>`** ด้วย Token ของคุณ
-    -   **แทนที่ `<YOUR_WEB_APP_URL>`** ด้วย Web App URL ของคุณ
-    -   นำ URL ที่สร้างเสร็จแล้วไปวางในเบราว์เซอร์และกด Enter
-    -   หากสำเร็จ คุณจะเห็นข้อความ: `{"ok":true,"result":true,"description":"Webhook was set"}`
-
-**ยินดีด้วย!** ตอนนี้ระบบ Smart BMS ของคุณพร้อมใช้งานแล้ว คุณสามารถเริ่มใช้คำสั่งต่างๆ ผ่าน Bot ที่คุณตั้งค่าไว้ได้เลย
+**ยินดีด้วย!** ตอนนี้ระบบ Smart BMS ของคุณพร้อมใช้งานแล้ว คุณสามารถเริ่มใช้คำสั่งต่างๆ ผ่าน Telegram Bot ของคุณได้เลย
