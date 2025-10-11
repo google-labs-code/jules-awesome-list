@@ -1,219 +1,75 @@
-<p align="center">
-  <img src="assets/jules-readme.png" alt="Jules Awesome List" width="600">
-</p>
-
-<div align="center">
-  <h1>Awesome Jules Prompts 🌟</h1>
-  <p>Curated prompts for Jules, an async coding agent from Google Labs.</p>
-  <br>
-  <a href="https://jules.google.com">Visit Jules</a> •
-  <a href="#contributing">Contribute</a>
-</div>
-
----
-
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Everyday Dev Tasks](#everyday-dev-tasks)
-- [Debugging](#debugging)
-- [Documentation](#documentation)
-- [Testing](#testing)
-- [Package Management](#package-management)
-- [AI-Native Tasks](#ai-native-tasks)
-- [Context](#context)
-- [Fun \& Experimental](#fun--experimental)
-- [Start from Scratch](#start-from-scratch)
-- [Contributing](#contributing)
-
----
-
-## Everyday Dev Tasks
-
-- `// Refactor {a specific} file from {x} to {y}...`
-  <sub>General-purpose, applies to any language or repo.</sub>
-
-- `// Add a test suite...`
-  <sub>Useful for repos lacking test coverage.</sub>
-
-- `// Add type hints to {a specific} Python function...`
-  <sub>Python codebases transitioning to typed code.</sub>
-
-- `// Generate mock data for {a specific} schema...`
-  <sub>APIs, frontends, or test-heavy environments.</sub>
-
-- `// Convert these commonJS modules to ES modules...`
-  <sub>JS/TS projects modernizing legacy code.</sub>
-
-- `// Turn this callback-based code into async/await...`
-  <sub>JavaScript or Python codebases improving async logic.</sub>
-
-- `// Implement a data class for this dictionary structure...`
-  <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
-
-
-
-## Debugging
-
-- `// Help me fix {a specific} error...`
-  <sub>For any repo where you're stuck on a runtime or build error.</sub>
-
-- `// Why is {this specific snippet of code} slow?`
-  <sub>Performance profiling for loops, functions, or queries.</sub>
-
-- `// Trace why this value is undefined...`
-  <sub>Frontend and backend JS/TS bugs.</sub>
-
-- `// Diagnose this memory leak...`
-  <sub>Server-side apps or long-running processes.</sub>
-
-- `// Add logging to help debug this issue...`
-  <sub>Useful when troubleshooting silent failures.</sub>
-
-- `// Find race conditions in this async code`
-  <sub>Concurrent systems in JS, Python, Go, etc.</sub>
-
-- `// Add print statements to trace the execution flow of this Python script...`
-  <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
-
-
-## Documentation
-
-- `// Write a README for this project`
-  <sub>Any repo lacking a basic project overview.</sub>
-
-- `// Add comments to this code`
-  <sub>Improves maintainability of complex logic.</sub>
-
-- `// Write API docs for this endpoint`
-  <sub>REST or GraphQL backends.</sub>
-
-- `// Generate Sphinx-style docstrings for this Python module/class/function...`
-  <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
-
-
-
-## Testing
-
-- `// Add integration tests for this API endpoint`
-  <sub>Express, FastAPI, Django, Flask apps.</sub>
-
-- `// Write a test that mocks fetch`
-  <sub>Browser-side fetch or axios logic.</sub>
-
-- `// Convert this test from Mocha to Jest`
-  <sub>JS test suite migrations.</sub>
-
-- `// Generate property-based tests for this function`
-  <sub>Functional or logic-heavy code.</sub>
-
-- `// Simulate slow network conditions in this test suite`
-  <sub>Web and mobile apps.</sub>
-
-- `// Write a test to ensure backward compatibility for this function`
-  <sub>Library or SDK maintainers.</sub>
-
-- `// Write a Pytest fixture to mock this external API call...`
-  <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
-
-
-
-## Package Management
-
-- `// Upgrade my linter and autofix breaking config changes`
-  <sub>JS/TS repos using ESLint or Prettier.</sub>
-
-- `// Show me the changelog for React 19`
-  <sub>Web frontend apps using React.</sub>
-
-- `// Which dependencies can I safely remove?`
-  <sub>Bloated or legacy codebases.</sub>
-
-- `// Check if these packages are still maintained`
-  <sub>Security-conscious or long-term projects.</sub>
-
-- `// Set up Renovate or Dependabot for auto-updates`
-  <sub>Best for active projects with CI/CD.</sub>
-
-
-
-## AI-Native Tasks
-
-- `// Analyze this repo and generate 3 feature ideas`
-  <sub>Vision-stage or greenfield products.</sub>
-
-- `// Identify tech debt in this file`
-  <sub>Codebases with messy or fragile logic.</sub>
-
-- `// Find duplicate logic across files`
-  <sub>Sprawling repos lacking DRY practices.</sub>
-
-- `// Cluster related functions and suggest refactors`
-  <sub>Projects with lots of utils or helpers.</sub>
-
-- `// Help me scope this issue so Jules can solve it`
-  <sub>For working with Jules on real issues.</sub>
-
-- `// Convert this function into a reusable plugin/module`
-  <sub>Componentizing logic-heavy code.</sub>
-
-- `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
-  <sub>For optimizing performance in computationally intensive Python applications.</sub>
-
-
-
-## Context
-
-- `// Write a status update based on recent commits`
-  <sub>Managerial and async communication.</sub>
-
-- `// Summarize all changes in the last 7 days`
-  <sub>Catching up after time off.</sub>
-
-
-
-## Fun & Experimental
-
-- `// Add a confetti animation when {a specific} action succeeds`
-  <sub>Frontend web apps with user delight moments.</sub>
-
-- `// Inject a developer joke when {a specific} build finishes`
-  <sub>Personal projects or team tools.</sub>
-
-- `// Build a mini CLI game that runs in the terminal`
-  <sub>For learning or community fun.</sub>
-
-- `// Add a dark mode Easter egg to this UI`
-  <sub>Design-heavy frontend projects.</sub>
-
-- `// Turn this tool into a GitHub App`
-  <sub>Reusable, platform-integrated tools.</sub>
-
-## Start from Scratch
-
-- `// What's going on in this repo?`
-  <sub>Great for legacy repos or onboarding onto unfamiliar code.</sub>
-
-- `// Initialize a new Express app with CORS enabled`
-  <sub>Web backend projects using Node.js and Express.</sub>
-
-- `// Set up a monorepo using Turborepo and PNPM`
-  <sub>Multi-package JS/TS projects with shared dependencies.</sub>
-
-- `// Bootstrap a Python project with Poetry and Pytest`
-  <sub>Python repos aiming for clean dependency and test setup.</sub>
-
-- `// Create a starter template for a Chrome extension`
-  <sub>Browser extension development.</sub>
-
-- `// I want to build a web scraper—start me off`
-  <sub>Data scraping or automation tools using Python/Node.</sub>
-
-
-
-## Contributing
-
-Your contributions are welcome! Add new prompts, fix formatting, or suggest categories.
-
-- 📄 [Contributing Guide](contributing.md)
-- 🪄 Open a [Pull Request](https://github.com/YOUR_REPO/pulls)
+# Hotel OS Bot (Python / Gemini Version)
+
+This is a powerful, context-aware Telegram bot for hotel management, built with Python. It leverages the Google Gemini API for natural language understanding, allowing users to interact with it through normal conversation instead of rigid commands.
+
+## Core Architecture (The System Blueprint)
+
+The bot operates on an intelligent loop:
+1.  **Input Reception:** Receives any user input (text, images).
+2.  **Contextual Memory:** Manages conversation history for each user.
+3.  **Dynamic Prompt Engineering:** Combines new input with past conversation to create a rich prompt for the AI.
+4.  **Gemini API Call:** Sends the engineered prompt to the Gemini API for intent detection and entity extraction.
+5.  **Response Parsing:** Interprets Gemini's response to decide whether it's an actionable command (JSON) or a conversational reply.
+6.  **Logic & Action:** Executes internal functions (e.g., database queries, sheet updates) based on the AI's structured output.
+7.  **Memory Update:** Saves the latest interaction to the user's conversation history.
+
+## Features
+
+- **Natural Language Interaction:** Talk to the bot like you would a human assistant.
+- **SQLite Database:** Uses a local SQLite database (`hotel_os.db`) for robust data persistence.
+- **Google Sheets Integration:** Connects to Google Sheets for specific tasks like repair ticket management.
+- **OCR Slip Processing:** Can read text from uploaded payment slips.
+- **Modular & Scalable:** Code is organized into logical modules (`database`, `sheets`, `processors`, `handlers`) for easy maintenance.
+
+## Project Structure
+
+```
+/
+├── .gitignore
+├── config.py
+├── requirements.txt
+├── main.py
+└── bot/
+    ├── __init__.py
+    ├── database.py       # Handles all SQLite database operations
+    ├── sheets.py         # Handles all Google Sheets API operations
+    ├── processors.py     # Handles OCR and Gemini API calls
+    └── handlers.py       # Contains all Telegram command and conversation logic
+```
+
+## Setup & Installation
+
+This project is designed to be run in an environment like Google Colab where `ngrok` can expose the webhook.
+
+### 1. Prerequisites
+- A Telegram Bot Token from BotFather.
+- A Google Cloud Project with a **Service Account JSON file** (for Google Sheets).
+- A **Google Gemini API Key**.
+- An `ngrok` authentication token.
+
+### 2. Configuration
+- **Colab Secrets:** The most secure way to run this is by using Google Colab's "Secrets" (🔑 icon on the left). Add the following secrets:
+    - `BOT_TOKEN`: Your Telegram Bot Token.
+    - `GEMINI_API_KEY`: Your Google Gemini API Key.
+    - `SERVICE_ACCOUNT_JSON_PATH`: The *full path* to your uploaded `service_account.json` file in your Colab environment (e.g., `/content/service_account.json`).
+    - `NGROK_AUTHTOKEN`: Your authentication token from the ngrok dashboard.
+    - `ADMIN_CHAT_ID`: The numeric chat ID for receiving admin notifications.
+- **Upload Service Account File:** Upload your `service_account.json` file to your Colab instance. Make sure the path matches what you put in the `SERVICE_ACCOUNT_JSON_PATH` secret.
+
+### 3. Installation
+Run this command in a cell to install all necessary Python libraries:
+```bash
+!pip install -r requirements.txt
+```
+
+### 4. Running the Bot
+Execute the main script in a Colab cell:
+```bash
+!python main.py
+```
+The script will:
+1.  Set up the `hotel_os.db` SQLite database file.
+2.  Register all Telegram handlers.
+3.  Start an `ngrok` tunnel to create a public URL.
+4.  Set the Telegram webhook to that public URL.
+5.  Start listening for incoming messages. You will see a `Bot is running!` message with the public URL.

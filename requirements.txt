@@ -1,0 +1,20 @@
+# Telegram Bot
+python-telegram-bot
+
+# Google Services
+gspread
+oauth2client
+google-generativeai
+
+# OCR
+Pillow
+pytesseract
+
+# PDF Generation
+fpdf
+
+# Utilities
+python-dateutil
+nest-asyncio
+pyngrok
+pydantic
