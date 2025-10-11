@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart BMS Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Telegram Web App SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Smart BMS Dashboard</h1>
+            <p id="user-info">Welcome, User!</p>
+        </header>
+
+        <main>
+            <section id="tasks-section">
+                <h2>Recent Tasks</h2>
+                <div id="tasks-list" class="list-container">
+                    <p>Loading tasks...</p>
+                </div>
+            </section>
+
+            <section id="personnel-section">
+                <h2>Personnel</h2>
+                <div id="personnel-list" class="list-container">
+                    <p>Loading personnel data...</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Powered by Smart BMS Bot</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

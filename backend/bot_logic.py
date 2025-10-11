@@ -7,7 +7,7 @@ the NLP/OCR processors, and the data handlers (Google Sheets).
 """
 
 import logging
-from telegram import Update
+from telegram import Update, WebAppInfo, KeyboardButton, ReplyKeyboardMarkup
 from telegram.ext import ContextTypes
 
 # Import processors
@@ -22,6 +22,23 @@ logger = logging.getLogger(__name__)
 
 
 # --- Core Handler Functions ---
+
+async def dashboard(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    """Sends a message with a button that opens the Mini App."""
+    # The URL here should be the public URL where your Flask app is hosted.
+    # For local testing, you might use a service like ngrok to expose your localhost.
+    # The user's client will open this URL.
+    # IMPORTANT: Telegram requires this URL to be HTTPS.
+    keyboard = [
+        [KeyboardButton(
+            "🚀 Open Dashboard",
+            web_app=WebAppInfo(url="<YOUR_PUBLIC_HTTPS_URL_HERE>")
+        )]
+    ]
+    await update.message.reply_text(
+        "Click the button below to open your Smart BMS Dashboard:",
+        reply_markup=ReplyKeyboardMarkup(keyboard)
+    )
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Sends a welcome message when the /start command is issued."""

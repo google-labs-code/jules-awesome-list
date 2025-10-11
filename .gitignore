@@ -1,0 +1,13 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# Service account credentials
+service_account.json
+
+# IDE and editor directories
+.vscode/
+.idea/
