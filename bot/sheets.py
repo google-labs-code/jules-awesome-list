@@ -1,6 +1,9 @@
 # bot/sheets.py
-"""
-Module for all Google Sheets interactions using gspread.
+"""Module for all Google Sheets interactions using gspread.
+
+This module provides a simplified interface for connecting to the Google Sheets API,
+accessing specific worksheets, and performing operations like adding and updating
+repair tickets. It handles authentication using a service account.
 """
 
 import gspread
@@ -14,8 +17,21 @@ logger = logging.getLogger(__name__)
 
 _client = None
 
+
 def _get_client():
-    """Authenticates with Google Sheets API and returns a client. Caches the client."""
+    """Authenticates with Google Sheets API and returns a cached client instance.
+
+    This internal function uses the service account credentials specified in the
+    config to authorize with the Google Sheets API. It caches the client object
+    globally to avoid re-authenticating on every call.
+
+    Returns:
+        gspread.Client: An authorized gspread client object.
+
+    Raises:
+        FileNotFoundError: If the service account JSON file cannot be found.
+        Exception: For any other errors during the authorization process.
+    """
     global _client
     if _client:
         return _client
@@ -34,7 +50,20 @@ def _get_client():
         raise
 
 async def get_sheet(spreadsheet_name: str, worksheet_name: str):
-    """Gets a specific worksheet from a spreadsheet."""
+    """Gets a specific worksheet from a spreadsheet by name.
+
+    Args:
+        spreadsheet_name (str): The name of the Google Spreadsheet.
+        worksheet_name (str): The name of the worksheet within the spreadsheet.
+
+    Returns:
+        gspread.Worksheet: The requested worksheet object.
+
+    Raises:
+        gspread.exceptions.SpreadsheetNotFound: If the spreadsheet is not found.
+        gspread.exceptions.WorksheetNotFound: If the worksheet is not found.
+        Exception: For other potential API errors.
+    """
     try:
         client = _get_client()
         spreadsheet = client.open(spreadsheet_name)
@@ -52,7 +81,16 @@ async def get_sheet(spreadsheet_name: str, worksheet_name: str):
         raise
 
 async def add_repair_ticket(sheet, ticket_data: dict) -> bool:
-    """Appends a new repair ticket to the specified sheet."""
+    """Appends a new repair ticket as a new row in a worksheet.
+
+    Args:
+        sheet (gspread.Worksheet): The worksheet object to append the row to.
+        ticket_data (dict): A dictionary containing the repair ticket info.
+                            The keys should correspond to the ticket attributes.
+
+    Returns:
+        bool: True if the append operation was successful, False otherwise.
+    """
     try:
         # The order must match the columns in the Google Sheet
         row_data = [
@@ -72,7 +110,18 @@ async def add_repair_ticket(sheet, ticket_data: dict) -> bool:
         return False
 
 async def update_repair_status(sheet, ticket_id: str, new_status: str, closed_timestamp: str | None) -> bool:
-    """Finds a repair ticket by ID and updates its status."""
+    """Finds a repair ticket by ID in a worksheet and updates its status.
+
+    Args:
+        sheet (gspread.Worksheet): The worksheet to search in.
+        ticket_id (str): The unique ID of the ticket to find.
+        new_status (str): The new status to set for the ticket.
+        closed_timestamp (str | None): The timestamp to set if the status is
+                                       'Closed'.
+
+    Returns:
+        bool: True if the ticket was found and updated, False otherwise.
+    """
     try:
         cell = sheet.find(ticket_id)
         if not cell:
@@ -91,7 +140,18 @@ async def update_repair_status(sheet, ticket_id: str, new_status: str, closed_ti
         return False
 
 async def get_next_repair_ticket_id(sheet) -> str:
-    """Generates the next repair ticket ID based on the last entry in the sheet."""
+    """Generates a new repair ticket ID based on the last ID in the sheet.
+
+    It reads the first column of the sheet, finds the last valid ticket ID
+    (e.g., "REPAIR_123"), extracts the numeric part, increments it, and
+    returns a new ID string.
+
+    Args:
+        sheet (gspread.Worksheet): The worksheet containing the ticket IDs.
+
+    Returns:
+        str: The newly generated unique ticket ID (e.g., "REPAIR_124").
+    """
     try:
         ticket_ids_column = sheet.col_values(1)  # Assuming Ticket ID is in the first column (A)
         last_id_number = 0

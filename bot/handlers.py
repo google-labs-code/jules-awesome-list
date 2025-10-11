@@ -1,7 +1,10 @@
 # bot/handlers.py
-"""
-This module contains all the Telegram handler functions and conversation handlers.
-It orchestrates the bot's logic by calling processors and data modules.
+"""This module contains all the Telegram handler functions for the bot.
+
+It defines the conversation flows for booking, check-in, check-out, and
+repair requests. It uses `telegram.ext.ConversationHandler` to manage
+multi-step interactions with the user. Each conversation is broken down
+into states, with specific functions to handle user input at each step.
 """
 
 import logging
@@ -50,7 +53,16 @@ logger = logging.getLogger(__name__)
 # --- Main Menu and Basic Command Handlers ---
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Handles the /start command and sends the main menu."""
+    """Handles the /start command and displays the main menu.
+
+    This function sends a welcome message with an inline keyboard containing
+    the main menu options. It can be triggered by a command or a callback query
+    (e.g., after canceling a conversation).
+
+    Args:
+        update (Update): The incoming Telegram update.
+        context (ContextTypes.DEFAULT_TYPE): The context object for the update.
+    """
     keyboard = [
         [InlineKeyboardButton("🔑 เช็คอิน", callback_data='menu_checkin')],
         [InlineKeyboardButton("🚪 เช็คเอาท์", callback_data='menu_checkout')],
@@ -77,40 +89,61 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 # --- Booking Reservation Conversation (Now Complete) ---
 
 async def reserve_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Entry point for the booking reservation conversation."""
+    """Starts the booking reservation conversation.
+
+    This function is the entry point for the booking `ConversationHandler`.
+    It asks the user for the customer's name.
+
+    Args:
+        update (Update): The incoming Telegram update.
+        context (ContextTypes.DEFAULT_TYPE): The context object.
+
+    Returns:
+        int: The next state for the `ConversationHandler` (WAITING_FOR_CUSTOMER_NAME).
+    """
     query = update.callback_query
     await query.answer()
     await query.edit_message_text("📝 **กระบวนการจองห้องพัก**\nกรุณาพิมพ์ชื่อ-นามสกุลลูกค้าครับ:")
     return WAITING_FOR_CUSTOMER_NAME
 
 async def get_customer_name(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Stores the customer name and asks for their phone number."""
     context.user_data['customer_name'] = update.message.text
     await update.message.reply_text("📞 กรุณาพิมพ์เบอร์โทรศัพท์ติดต่อ:")
     return WAITING_FOR_PHONE
 
+
 async def get_phone(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Stores the phone number and asks for the email."""
     context.user_data['phone'] = update.message.text
     await update.message.reply_text("📧 กรุณาพิมพ์อีเมล:")
     return WAITING_FOR_EMAIL
 
+
 async def get_email(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Stores the email and asks for the check-in date."""
     context.user_data['email'] = update.message.text
     await update.message.reply_text("🗓️ กรุณาพิมพ์วันที่เช็คอิน (YYYY-MM-DD):")
     return WAITING_FOR_CHECKIN_DATE
 
+
 async def get_checkin_date(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Stores the check-in date and asks for the check-out date."""
     # Basic validation could be added here
     context.user_data['checkin_date'] = update.message.text
     await update.message.reply_text("🗓️ กรุณาพิมพ์วันที่เช็คเอาท์ (YYYY-MM-DD):")
     return WAITING_FOR_CHECKOUT_DATE
 
+
 async def get_checkout_date(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Stores the check-out date and asks for the number of guests."""
     context.user_data['checkout_date'] = update.message.text
     await update.message.reply_text("👥 กรุณาพิมพ์จำนวนผู้เข้าพัก:")
     return WAITING_FOR_GUESTS
 
+
 async def get_guests_and_confirm(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Gets the final piece of info and shows confirmation."""
+    """Stores guest count, shows a summary, and asks for confirmation."""
     context.user_data['num_guests'] = update.message.text
 
     details = context.user_data
@@ -135,7 +168,15 @@ async def get_guests_and_confirm(update: Update, context: ContextTypes.DEFAULT_T
     return CONFIRM_BOOKING
 
 async def save_booking(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Saves the booking to the database and ends the conversation."""
+    """Saves the confirmed booking details to the database.
+
+    This function is triggered after the user confirms the booking summary.
+    It generates a new booking ID, saves the data, and sends a confirmation
+    message to the user.
+
+    Returns:
+        int: Ends the conversation using `ConversationHandler.END`.
+    """
     query = update.callback_query
     await query.answer()
 
@@ -174,20 +215,21 @@ async def save_booking(update: Update, context: ContextTypes.DEFAULT_TYPE) -> in
 # --- Repair Conversation ---
 
 async def repair_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Entry point for the repair conversation."""
+    """Starts the repair request conversation."""
     query = update.callback_query
     await query.answer()
     await query.edit_message_text(text="🛠️ **กระบวนการแจ้งซ่อม**\nกรุณาพิมพ์หมายเลขห้องครับ")
     return REPAIR_ROOM
 
 async def repair_get_room(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Gets the room number and asks for issue details."""
+    """Stores the room number and asks for the repair details."""
     context.user_data['room_number'] = update.message.text.strip().upper()
     await update.message.reply_text("กรุณาอธิบายรายละเอียดปัญหาที่พบครับ")
     return REPAIR_DETAIL
 
+
 async def repair_process(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Processes the repair details, calls Gemini, saves data, and confirms."""
+    """Processes the repair details using Gemini and saves the ticket."""
     issue_detail = update.message.text
     room_number = context.user_data.get('room_number')
 
@@ -230,12 +272,14 @@ async def repair_process(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
 # --- Checkout Conversation ---
 
 async def checkout_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Starts the checkout conversation by asking for a booking ID."""
     query = update.callback_query
     await query.answer()
     await query.edit_message_text(text="🚪 **กระบวนการเช็คเอาท์**\nกรุณาพิมพ์รหัสการจอง (Booking ID) ที่ต้องการเช็คเอาท์ครับ")
     return REQUEST_BOOKING_ID_CHECKOUT
 
 async def checkout_get_booking_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Gets and verifies the booking ID for checkout."""
     booking_id = update.message.text.strip().upper()
     try:
         reservation = await db.get_reservation(booking_id)
@@ -257,6 +301,7 @@ async def checkout_get_booking_id(update: Update, context: ContextTypes.DEFAULT_
         return ConversationHandler.END
 
 async def checkout_confirm(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Confirms and processes the checkout."""
     query = update.callback_query
     await query.answer()
     booking_id = context.user_data.get('booking_id')
@@ -276,12 +321,14 @@ async def checkout_confirm(update: Update, context: ContextTypes.DEFAULT_TYPE) -
 # --- Check-in Conversation ---
 
 async def checkin_start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Starts the check-in conversation by asking for a booking ID."""
     query = update.callback_query
     await query.answer()
     await query.edit_message_text(text="🔑 **กระบวนการเช็คอิน**\nกรุณาพิมพ์รหัสการจอง (Booking ID) ที่ต้องการเช็คอินครับ")
     return REQUEST_BOOKING_ID_CHECKIN
 
 async def checkin_get_booking_id(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Gets and verifies the booking ID for check-in."""
     booking_id = update.message.text.strip().upper()
     try:
         reservation = await db.get_reservation(booking_id)
@@ -300,6 +347,7 @@ async def checkin_get_booking_id(update: Update, context: ContextTypes.DEFAULT_T
         return ConversationHandler.END
 
 async def upload_slip_process(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
+    """Processes an uploaded payment slip image for check-in."""
     booking_id = context.user_data.get('booking_id')
     if not update.message.photo:
         await update.message.reply_text("กรุณาอัปโหลดเป็นรูปภาพครับ")
@@ -331,7 +379,7 @@ async def upload_slip_process(update: Update, context: ContextTypes.DEFAULT_TYPE
     return ConversationHandler.END
 
 async def report_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Placeholder for the report feature."""
+    """Displays the report menu (currently a placeholder)."""
     query = update.callback_query
     await query.answer()
     await query.edit_message_text(text="ฟังก์ชันรายงานยังไม่เปิดใช้งานครับ")
@@ -339,7 +387,15 @@ async def report_menu(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
     await start(update, context)
 
 async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
-    """Cancels and ends the conversation, bringing back the main menu."""
+    """Cancels the current conversation and returns to the main menu.
+
+    This function serves as a fallback for all `ConversationHandler`s. It
+    clears any user data from the context and calls `start()` to show the
+    main menu again.
+
+    Returns:
+        int: Ends the conversation.
+    """
     await update.message.reply_text("การดำเนินการถูกยกเลิก")
     context.user_data.clear()
     await start(update, context) # Show main menu again
@@ -348,7 +404,15 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE) -> int:
 # --- Registration Function ---
 
 def register_handlers(application: Application):
-    """Registers all command, message, and conversation handlers."""
+    """Registers all handlers with the Telegram application.
+
+    This function sets up all the `ConversationHandler`s for the different
+    bot features and adds them, along with simple command handlers, to the
+    provided application instance.
+
+    Args:
+        application (Application): The `telegram.ext.Application` instance.
+    """
 
     conv_handler_booking = ConversationHandler(
         entry_points=[CallbackQueryHandler(reserve_start, pattern='^menu_reserve$')],

@@ -1,8 +1,16 @@
 # main.py
-"""
-Main entry point for the Hotel OS Bot.
-This script sets up logging, initializes the database, configures the bot application,
-adds all handlers, and starts the bot in webhook mode using ngrok.
+"""Main entry point for the Hotel OS Bot.
+
+This script is responsible for the main execution flow of the bot. It performs
+the following key operations:
+- Applies `nest_asyncio` for compatibility with environments like Google Colab.
+- Configures application-wide logging.
+- Performs pre-run checks for essential configuration variables.
+- Initializes the SQLite database.
+- Builds the `telegram.ext.Application`.
+- Registers all command and conversation handlers.
+- Sets up and manages an `ngrok` tunnel to create a public webhook URL.
+- Starts the bot's webhook listener to begin receiving updates from Telegram.
 """
 
 import asyncio
@@ -34,7 +42,19 @@ logger = logging.getLogger(__name__)
 
 
 async def main():
-    """Main function to set up and run the bot."""
+    """Initializes and runs the Hotel OS Bot.
+
+    This asynchronous function performs the following steps:
+    1.  Checks for critical configurations (BOT_TOKEN, NGROK_AUTHTOKEN).
+    2.  Sets up the SQLite database by calling `setup_database`.
+    3.  Builds the `telegram.ext.Application` instance.
+    4.  Registers all command and conversation handlers.
+    5.  Sets up an ngrok tunnel to expose a public URL for the webhook.
+    6.  Sets the Telegram bot's webhook to the public ngrok URL.
+    7.  Starts the bot's webhook listener.
+    8.  Includes a `finally` block to ensure the ngrok tunnel is killed
+        on exit.
+    """
 
     # --- Pre-run checks for critical configurations ---
     if not config.BOT_TOKEN or config.BOT_TOKEN == "YOUR_BOT_TOKEN_HERE":

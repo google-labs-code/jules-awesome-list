@@ -1,6 +1,9 @@
 # bot/database.py
-"""
-Module for all SQLite database interactions for the Hotel OS Bot.
+"""Module for all SQLite database interactions for the Hotel OS Bot.
+
+This module handles the connection to the SQLite database, table creation,
+and all CRUD (Create, Read, Update, Delete) operations for reservations
+and other bot-related data. It ensures that data is persisted correctly.
 """
 
 import sqlite3
@@ -11,8 +14,20 @@ import config
 
 logger = logging.getLogger(__name__)
 
+
 def _get_db_connection():
-    """Establishes a connection to the SQLite database."""
+    """Establishes and configures a connection to the SQLite database.
+
+    This internal function connects to the database file specified in the config
+    and sets the `row_factory` to `sqlite3.Row`. This allows for accessing
+    query results using column names, similar to a dictionary.
+
+    Returns:
+        sqlite3.Connection: A connection object to the database.
+
+    Raises:
+        sqlite3.Error: If the database connection fails.
+    """
     try:
         conn = sqlite3.connect(config.DATABASE_FILE)
         conn.row_factory = sqlite3.Row  # Allows accessing columns by name
@@ -21,10 +36,14 @@ def _get_db_connection():
         logger.critical(f"Database connection failed: {e}", exc_info=True)
         raise
 
+
 async def setup_database():
-    """
-    Connects to the SQLite database and sets up all necessary tables if they don't exist.
-    This is one of the most critical functions to ensure the bot can operate.
+    """Initializes the database and creates tables if they don't exist.
+
+    This function is a critical part of the bot's startup process. It ensures
+    that all necessary tables (`booking_counter`, `repair_ticket_counter`,
+    `reservations`, `repair_tasks`) are created, preventing errors during
+    runtime. It also initializes counter tables with a starting value.
     """
     logger.info(f"Running database setup for {config.DATABASE_FILE}...")
     conn = _get_db_connection()
@@ -95,7 +114,21 @@ async def setup_database():
 # --- Generic and Reusable Database Functions ---
 
 async def get_next_id(counter_table_name: str) -> int:
-    """Generic function to get the next ID from a counter table."""
+    """Atomically retrieves and increments a counter from a specified table.
+
+    This function fetches the last used ID from a given counter table
+    (e.g., `booking_counter`), increments it, updates the table with the new
+    ID, and returns the new ID. This ensures unique, sequential IDs.
+
+    Args:
+        counter_table_name (str): The name of the table that stores the counter.
+
+    Returns:
+        int: The next unique ID.
+
+    Raises:
+        sqlite3.Error: If a database error occurs.
+    """
     conn = _get_db_connection()
     cursor = conn.cursor()
     try:
@@ -117,7 +150,15 @@ async def get_next_id(counter_table_name: str) -> int:
 # --- Reservation Specific Functions ---
 
 async def add_reservation(details: dict):
-    """Adds a new reservation record to the database."""
+    """Inserts a new reservation record into the `reservations` table.
+
+    Args:
+        details (dict): A dictionary containing all the necessary reservation
+                        data, such as `booking_id`, `customer_name`, etc.
+
+    Raises:
+        sqlite3.Error: If the database insertion fails.
+    """
     conn = _get_db_connection()
     cursor = conn.cursor()
     try:
@@ -143,7 +184,18 @@ async def add_reservation(details: dict):
         conn.close()
 
 async def get_reservation(booking_id: str) -> dict | None:
-    """Fetches a single reservation by its booking ID."""
+    """Fetches a single reservation from the database by its booking ID.
+
+    Args:
+        booking_id (str): The unique ID of the reservation to retrieve.
+
+    Returns:
+        dict | None: A dictionary containing the reservation details if found,
+                     otherwise None.
+
+    Raises:
+        sqlite3.Error: If a database error occurs during the fetch.
+    """
     conn = _get_db_connection()
     cursor = conn.cursor()
     try:
@@ -157,7 +209,24 @@ async def get_reservation(booking_id: str) -> dict | None:
         conn.close()
 
 async def update_reservation_payment(booking_id: str, status: str, details: dict):
-    """Updates payment-related info for a reservation."""
+    """Updates the payment status and details for a specific reservation.
+
+    This is used during the check-in process to mark a reservation as 'Paid'
+    and record details extracted from a payment slip.
+
+    Args:
+        booking_id (str): The ID of the reservation to update.
+        status (str): The new payment status (e.g., "Paid", "Checked-Out").
+        details (dict): A dictionary containing payment information like
+                        `amount`, `bank`, `timestamp`, and `slip_path`.
+
+    Returns:
+        bool: True if the update was successful (at least one row affected),
+              False otherwise.
+
+    Raises:
+        sqlite3.Error: If the database update fails.
+    """
     conn = _get_db_connection()
     cursor = conn.cursor()
     try:

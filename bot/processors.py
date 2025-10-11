@@ -1,6 +1,9 @@
 # bot/processors.py
-"""
-Module for processing raw data, such as OCR and AI analysis.
+"""Module for processing raw data, such as OCR from images and AI analysis.
+
+This module contains functions that perform heavy-lifting data transformations.
+It includes an OCR processor for extracting text from payment slips and a
+Gemini AI processor for analyzing unstructured text like repair requests.
 """
 
 import logging
@@ -17,8 +20,21 @@ logger = logging.getLogger(__name__)
 # --- OCR Processor ---
 
 def process_image_for_ocr(image_bytes: bytes) -> str:
-    """
-    Processes an image from a byte stream for OCR using Pytesseract.
+    """Extracts text from an image using Tesseract OCR.
+
+    This function takes an image as a byte stream, opens it using Pillow,
+    and then uses Pytesseract to perform Optical Character Recognition (OCR).
+    It's configured to recognize both Thai and English languages.
+
+    Args:
+        image_bytes (bytes): The raw image data as a byte string.
+
+    Returns:
+        str: The extracted text. Returns a specific message if no text is found.
+
+    Raises:
+        pytesseract.TesseractNotFoundError: If the Tesseract executable is not found.
+        Exception: For any other errors during image processing or OCR.
     """
     try:
         logger.info("Processing image for OCR with Pytesseract...")
@@ -45,8 +61,19 @@ def process_image_for_ocr(image_bytes: bytes) -> str:
 # --- Gemini AI Processor ---
 
 async def analyze_repair_issue_with_gemini(issue_detail: str) -> dict:
-    """
-    Analyzes repair issue details using Gemini API to categorize and summarize.
+    """Analyzes a repair issue using the Google Gemini API.
+
+    This function sends a formatted prompt to the Gemini API, asking it to
+    categorize a repair issue and provide a concise summary in Thai. It then
+    parses the response to extract this structured data.
+
+    Args:
+        issue_detail (str): The raw, user-provided text describing the repair
+                            issue.
+
+    Returns:
+        dict: A dictionary containing the `category` and `summary` of the
+              issue. If an error occurs, it returns a dict with an `error` key.
     """
     logger.info(f"Analyzing repair issue with Gemini: '{issue_detail[:100]}...'")
 
