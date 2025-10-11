@@ -1,0 +1,12 @@
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Environment variables & secrets
+.env
+service_account.json
+hotel_os.db
+
+# IDE and editor directories
+.vscode/
+.idea/
