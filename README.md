@@ -69,6 +69,37 @@ python main.py
 ```
 The bot will use the configuration from your `.env` file to start, set up the database, and begin listening for messages.
 
+---
+
+## Termux Setup (for Android)
+
+For users running this bot on an Android device via Termux, a dedicated script simplifies the process.
+
+### 1. One-Time Termux Preparation
+If you are starting with a fresh Termux installation, you need to install some basic tools first. Run these commands only once:
+```bash
+pkg update && pkg upgrade
+pkg install git python tesseract
+```
+
+### 2. Clone the Repository
+Clone this project into your Termux environment:
+```bash
+git clone <repository_url>
+cd <repository_directory>
+```
+*(Replace `<repository_url>` and `<repository_directory>` with the actual URL and folder name)*
+
+### 3. Run the Bot
+Now, and every time you want to start the bot, just run the following command from the project directory:
+```bash
+./start_termux.sh
+```
+This script will automatically:
+- Check for and install any missing dependencies.
+- Run the interactive setup (`python setup.py`) if it's your first time.
+- Start the bot.
+
 ## Bot Commands and User Flows
 
 The bot is designed to be used through an interactive menu system.
