@@ -87,7 +87,10 @@
 2.  **ใส่ข้อมูลการตั้งค่าพื้นฐาน:**
     *   **SHEET_ID:** วาง ID ของ Google Sheet ของคุณ
     *   **TELEGRAM_BOT_TOKEN:** วาง Telegram Token ที่คัดลอกมา
+    *   **AI_SERVICE_API_KEY:** (สำหรับอนาคต) วาง API Key สำหรับบริการ AI ที่คุณเลือกใช้
     *   ใส่ค่าอื่นๆ ที่จำเป็น เช่น `TAX_RATE`, `RENTAL_BASE_RATE`
+
+    ***หมายเหตุ:*** *ปัจจุบันระบบใช้ AIจำลอง (Mock AI) จึงยังไม่จำเป็นต้องใช้ `AI_SERVICE_API_KEY` แต่มีการเตรียมช่องไว้สำหรับอนาคต*
 
 3.  **ตั้งค่า Webhook สำหรับ Telegram:**
     *   คุณต้อง "ลงทะเบียน" Webhook URL ของคุณกับ Telegram API ด้วยตนเอง
