@@ -2,103 +2,44 @@
 
 Allows users to interact with it through conversation instead of rigid commands.
 
-## Core Architecture
+## Quick Install (One-Command Setup)
 
-The bot is built on the `python-telegram-bot` library and uses a modular architecture to separate concerns.
+This project provides a one-command installer that handles everything from cloning the repository to configuring your secrets.
 
-- **`main.py`**: The main entry point. It initializes the database, sets up the Telegram bot application, registers all handlers, and starts the bot in webhook mode using `ngrok` for local development.
+**Open your terminal (or Termux on Android) and paste this single command:**
 
-- **`config.py`**: A centralized configuration module that securely loads sensitive data (like API keys and tokens) from Google Colab Secrets or environment variables.
-
-- **`bot/`**: This directory contains the core application logic:
-    - **`database.py`**: Manages all interactions with the local SQLite database (`hotel_os.db`). It handles table creation and all CRUD operations for reservations and repair tickets.
-    - **`sheets.py`**: Handles all interactions with the Google Sheets API using the `gspread` library. It's responsible for tasks like adding and updating repair tickets in a shared spreadsheet.
-    - **`processors.py`**: Contains data processing functions. This includes the Tesseract OCR processor for reading text from images (like payment slips) and the Google Gemini AI processor for analyzing unstructured text.
-    - **`handlers.py`**: The heart of the bot's user interaction logic. It defines the multi-step conversation flows (`ConversationHandler`) for all key features, such as booking, check-in, check-out, and repair requests.
-
-## Key Features
-
-- **Conversational Flows**: Manages multi-step user interactions for complex tasks like booking a room or filing a repair ticket.
-- **SQLite Database**: Uses a local SQLite database (`hotel_os.db`) for robust data persistence for core operations like reservations.
-- **Google Sheets Integration**: Connects to Google Sheets for real-time, collaborative tasks like managing repair tickets.
-- **OCR Slip Processing**: Automatically extracts text and payment details from uploaded payment slips using `pytesseract`.
-- **AI-Powered Analysis**: Leverages the Google Gemini API to analyze unstructured text, such as categorizing a user's repair request.
-
-## Project Structure
-
+```bash
+bash <(curl -s https://raw.githubusercontent.com/your-repo/your-project/main/install.sh)
 ```
-/
-├── .gitignore
-├── config.py
-├── requirements.txt
-├── main.py
-└── bot/
-    ├── __init__.py
-    ├── database.py       # Handles all SQLite database operations
-    ├── sheets.py         # Handles all Google Sheets API operations
-    ├── processors.py     # Handles OCR and Gemini API calls
-    └── handlers.py       # Contains all Telegram command and conversation logic
-```
+*(**Note**: You will need to replace the URL with the actual raw URL to the `install.sh` script in your repository once it's public.)*
 
-## Setup & Installation (Automated)
+The script will:
+1.  **Check for dependencies** like `git`, `python`, and `tesseract` and tell you how to install them if they're missing.
+2.  **Install all required Python packages.**
+3.  **Ask for your API keys and tokens** interactively.
+4.  **Prompt you to paste the content of your `service_account.json` file** directly into the terminal, creating the file for you.
+5.  Create the `.env` file to store all your settings.
 
-This project includes an automated setup script to simplify the installation and configuration process.
-
-### 1. Prerequisites
-- Python 3.8 or higher.
-- A Telegram Bot Token from BotFather.
-- A Google Gemini API Key.
-- An `ngrok` authentication token.
-- Your Google `service_account.json` file.
-
-### 2. Automated Setup
-1.  **Place Service Account File**: Put your `service_account.json` file in the root directory of this project.
-2.  **Run the Setup Script**: Open your terminal in the project's root directory and run the following command:
-    ```bash
-    python setup.py
-    ```
-3.  **Follow the Prompts**: The script will guide you through an interactive setup process:
-    - It will first install all the required Python dependencies from `requirements.txt`.
-    - It will then ask you to enter your API keys and tokens (`BOT_TOKEN`, `GEMINI_API_KEY`, `NGROK_AUTHTOKEN`, `ADMIN_CHAT_ID`).
-    - After you provide the details, it will automatically create a `.env` file in the project root to securely store your configuration.
-
-### 3. Running the Bot
-Once the setup is complete, you can run the bot at any time with this command:
+After the installer finishes, you can start the bot at any time by running:
 ```bash
 python main.py
 ```
-The bot will use the configuration from your `.env` file to start, set up the database, and begin listening for messages.
 
 ---
 
-## Termux Setup (for Android)
+## About the Project
 
-For users running this bot on an Android device via Termux, a dedicated script simplifies the process.
+This is a powerful, context-aware Telegram bot for hotel management, built with Python. It leverages the Google Gemini API for natural language understanding.
 
-### 1. One-Time Termux Preparation
-If you are starting with a fresh Termux installation, you need to install some basic tools first. Run these commands only once:
-```bash
-pkg update && pkg upgrade
-pkg install git python tesseract
-```
+### Core Architecture
+- **`main.py`**: The application's entry point.
+- **`config.py`**: Manages configuration loaded from a `.env` file.
+- **`bot/`**: Contains the core logic for database interactions, Google Sheets integration, data processing (OCR/AI), and Telegram command handlers.
 
-### 2. Clone the Repository
-Clone this project into your Termux environment:
-```bash
-git clone <repository_url>
-cd <repository_directory>
-```
-*(Replace `<repository_url>` and `<repository_directory>` with the actual URL and folder name)*
-
-### 3. Run the Bot
-Now, and every time you want to start the bot, just run the following command from the project directory:
-```bash
-./start_termux.sh
-```
-This script will automatically:
-- Check for and install any missing dependencies.
-- Run the interactive setup (`python setup.py`) if it's your first time.
-- Start the bot.
+### Key Features
+- **Conversational Flows**: Manages multi-step user interactions for booking, check-in, etc.
+- **SQLite & Google Sheets**: Uses a local database for core data and Google Sheets for collaborative tasks.
+- **OCR & AI**: Processes payment slips with OCR and analyzes text with the Gemini API.
 
 ## Bot Commands and User Flows
 
