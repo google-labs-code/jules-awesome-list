@@ -2,11 +2,10 @@
 __pycache__/
 *.pyc
 
-# Environment variables
+# Environment variables & secrets
 .env
-
-# Service account credentials
 service_account.json
+hotel_os.db
 
 # IDE and editor directories
 .vscode/

@@ -1,76 +1,75 @@
-# Smart BMS Bot v2.0 (Python Version)
+# Hotel OS Bot (Python / Gemini Version)
 
-This project is a complete rewrite of the Smart Business Management System (BMS) Bot in Python, leveraging powerful open-source libraries to create a more robust, scalable, and intelligent assistant.
+This is a powerful, context-aware Telegram bot for hotel management, built with Python. It leverages the Google Gemini API for natural language understanding, allowing users to interact with it through normal conversation instead of rigid commands.
+
+## Core Architecture (The System Blueprint)
+
+The bot operates on an intelligent loop:
+1.  **Input Reception:** Receives any user input (text, images).
+2.  **Contextual Memory:** Manages conversation history for each user.
+3.  **Dynamic Prompt Engineering:** Combines new input with past conversation to create a rich prompt for the AI.
+4.  **Gemini API Call:** Sends the engineered prompt to the Gemini API for intent detection and entity extraction.
+5.  **Response Parsing:** Interprets Gemini's response to decide whether it's an actionable command (JSON) or a conversational reply.
+6.  **Logic & Action:** Executes internal functions (e.g., database queries, sheet updates) based on the AI's structured output.
+7.  **Memory Update:** Saves the latest interaction to the user's conversation history.
 
 ## Features
 
-- **Natural Language Understanding:** Powered by `spaCy`, the bot can understand natural user requests in Thai instead of relying on rigid commands.
-- **Telegram Integration:** Real-time communication and notifications through a Telegram bot interface, using `python-telegram-bot`.
-- **Google Sheets as a Database:** Uses `gspread` to interact with a Google Sheet, allowing for easy data management and viewing.
-- **Open Source OCR:** Extracts text from images (e.g., receipts, documents) using `Pytesseract`.
-- **Modular Architecture:** The code is organized into logical modules for easy maintenance and future expansion.
-
-## Setup and Installation
-
-### Prerequisites
-
-- Python 3.8+
-- Tesseract OCR Engine installed on your system.
-- A Google Cloud Platform project with a Service Account.
-- A Telegram Bot created via BotFather.
-- (Optional for local testing) [ngrok](https://ngrok.com/) to expose your local server to the internet.
-
-### Installation Steps
-
-1.  **Clone the repository and navigate into it:**
-    ```bash
-    git clone <repository_url>
-    cd <repository_directory>
-    ```
-
-2.  **Navigate into the backend directory and install dependencies:**
-    ```bash
-    cd backend
-    pip install -r requirements.txt
-    ```
-
-3.  **Download the spaCy language model:**
-    ```bash
-    python -m spacy download th_core_web_sm
-    ```
-
-4.  **Configure the bot:**
-    - Place your `service_account.json` file inside the `backend` directory.
-    - Open `backend/config.py` and fill in the values for `TELEGRAM_BOT_TOKEN` and `GOOGLE_SHEET_ID`.
-
-5.  **Run the Backend Server:**
-    ```bash
-    python main.py
-    ```
-    The backend server will start, typically on `http://127.0.0.1:8080`. The Telegram bot will start polling in the background.
-
-6.  **Expose your local server (for Mini App testing):**
-    - If you are running this locally, Telegram cannot access `localhost`. You need a public URL.
-    - Open a **new terminal window** and run `ngrok http 8080`.
-    - ngrok will give you a public `https://` forwarding URL. **Copy this HTTPS URL.**
-
-7.  **Set the Mini App URL:**
-    - Open `backend/bot_logic.py`.
-    - Find the `dashboard` function and replace `<YOUR_PUBLIC_HTTPS_URL_HERE>` with the actual ngrok URL you copied.
-    - **Note:** You will need to restart the Python server after changing the code.
+- **Natural Language Interaction:** Talk to the bot like you would a human assistant.
+- **SQLite Database:** Uses a local SQLite database (`hotel_os.db`) for robust data persistence.
+- **Google Sheets Integration:** Connects to Google Sheets for specific tasks like repair ticket management.
+- **OCR Slip Processing:** Can read text from uploaded payment slips.
+- **Modular & Scalable:** Code is organized into logical modules (`database`, `sheets`, `processors`, `handlers`) for easy maintenance.
 
 ## Project Structure
 
-- `backend/`: Contains all the Python source code for the bot and API server.
-  - `main.py`: The main entry point to start the Flask server and the bot.
-  - `requirements.txt`: A list of all Python dependencies.
-  - `config.py`: Configuration file for secrets and settings.
-  - `sheets_handler.py`: Module for all interactions with Google Sheets.
-  - `ocr_processor.py`: Module for handling OCR tasks.
-  - `nlp_processor.py`: Module for processing natural language.
-  - `bot_logic.py`: Core module containing the bot's command and message handling logic.
-- `frontend/`: Contains all the files for the Telegram Mini App.
-  - `index.html`: The main HTML file.
-  - `style.css`: The stylesheet.
-  - `script.js`: The JavaScript logic.
-- `README.md`: This file.
+```
+/
+├── .gitignore
+├── config.py
+├── requirements.txt
+├── main.py
+└── bot/
+    ├── __init__.py
+    ├── database.py       # Handles all SQLite database operations
+    ├── sheets.py         # Handles all Google Sheets API operations
+    ├── processors.py     # Handles OCR and Gemini API calls
+    └── handlers.py       # Contains all Telegram command and conversation logic
+```
+
+## Setup & Installation
+
+This project is designed to be run in an environment like Google Colab where `ngrok` can expose the webhook.
+
+### 1. Prerequisites
+- A Telegram Bot Token from BotFather.
+- A Google Cloud Project with a **Service Account JSON file** (for Google Sheets).
+- A **Google Gemini API Key**.
+- An `ngrok` authentication token.
+
+### 2. Configuration
+- **Colab Secrets:** The most secure way to run this is by using Google Colab's "Secrets" (🔑 icon on the left). Add the following secrets:
+    - `BOT_TOKEN`: Your Telegram Bot Token.
+    - `GEMINI_API_KEY`: Your Google Gemini API Key.
+    - `SERVICE_ACCOUNT_JSON_PATH`: The *full path* to your uploaded `service_account.json` file in your Colab environment (e.g., `/content/service_account.json`).
+    - `NGROK_AUTHTOKEN`: Your authentication token from the ngrok dashboard.
+    - `ADMIN_CHAT_ID`: The numeric chat ID for receiving admin notifications.
+- **Upload Service Account File:** Upload your `service_account.json` file to your Colab instance. Make sure the path matches what you put in the `SERVICE_ACCOUNT_JSON_PATH` secret.
+
+### 3. Installation
+Run this command in a cell to install all necessary Python libraries:
+```bash
+!pip install -r requirements.txt
+```
+
+### 4. Running the Bot
+Execute the main script in a Colab cell:
+```bash
+!python main.py
+```
+The script will:
+1.  Set up the `hotel_os.db` SQLite database file.
+2.  Register all Telegram handlers.
+3.  Start an `ngrok` tunnel to create a public URL.
+4.  Set the Telegram webhook to that public URL.
+5.  Start listening for incoming messages. You will see a `Bot is running!` message with the public URL.
