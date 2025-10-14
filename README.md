@@ -91,7 +91,7 @@
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
 
-- `// Generate JSDoc inline documentation for JavaScript classes, modules, and functions`
+- `// Generate JSDoc inline documentation for JavaScript classes, functions, and modules`
   <sub>Ideal for JavaScript projects of all kinds.</sub>
 
 
