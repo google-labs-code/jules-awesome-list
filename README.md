@@ -20,12 +20,12 @@
 - [Documentation](#documentation)
 - [Testing](#testing)
 - [Package Management](#package-management)
+- [Security & Compliance](#security--compliance)  <!-- ADD THIS LINE -->
 - [AI-Native Tasks](#ai-native-tasks)
 - [Context](#context)
 - [Fun \& Experimental](#fun--experimental)
 - [Start from Scratch](#start-from-scratch)
 - [Contributing](#contributing)
-
 ---
 
 ## Everyday Dev Tasks
@@ -135,7 +135,37 @@
 - `// Set up Renovate or Dependabot for auto-updates`
   <sub>Best for active projects with CI/CD.</sub>
 
+## Security & Compliance
 
+- `// Scan dependencies for known CVEs and security vulnerabilities`
+  <sub>Security audits for npm, pip, Maven, or other package managers.</sub>
+
+- `// Add input validation to {these specific} API endpoints`
+  <sub>REST APIs or GraphQL endpoints needing request validation.</sub>
+
+- `// Implement rate limiting for {this specific} service`
+  <sub>Express, FastAPI, Flask, or Django apps preventing abuse.</sub>
+
+- `// Add security headers to HTTP responses (CSP, HSTS, X-Frame-Options)`
+  <sub>Web applications requiring production-ready security configuration.</sub>
+
+- `// Audit this code for SQL injection vulnerabilities`
+  <sub>Database-heavy applications with dynamic queries.</sub>
+
+- `// Generate a SECURITY.md with vulnerability reporting guidelines`
+  <sub>Open-source projects needing security disclosure policies.</sub>
+
+- `// Add JWT-based authentication middleware to these routes`
+  <sub>APIs requiring token-based authentication and authorization.</sub>
+
+- `// Implement CORS configuration for these endpoints`
+  <sub>Web APIs needing cross-origin resource sharing setup.</sub>
+
+- `// Add HTTPS/SSL configuration to this server setup`
+  <sub>Production deployments requiring encrypted connections.</sub>
+
+- `// Check for hardcoded secrets and credentials in this codebase`
+  <sub>Security-conscious projects preventing credential leaks.</sub>
 
 ## AI-Native Tasks
 
