@@ -22,7 +22,7 @@
 - [Package Management](#package-management)
 - [AI-Native Tasks](#ai-native-tasks)
 - [Context](#context)
-- [Fun \& Experimental](#fun--experimental)
+- [Fun & Experimental](#fun--experimental)
 - [Start from Scratch](#start-from-scratch)
 - [Contributing](#contributing)
 
