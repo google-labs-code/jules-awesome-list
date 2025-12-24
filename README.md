@@ -22,7 +22,7 @@
 - [Package Management](#package-management)
 - [AI-Native Tasks](#ai-native-tasks)
 - [Context](#context)
-- [Fun \& Experimental](#fun--experimental)
+- [Fun & Experimental](#fun--experimental)
 - [Start from Scratch](#start-from-scratch)
 - [Contributing](#contributing)
 
@@ -51,8 +51,6 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
-
-
 ## Debugging
 
 - `// Help me fix {a specific} error...`
@@ -76,7 +74,6 @@
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
 
-
 ## Documentation
 
 - `// Write a README for this project`
@@ -90,8 +87,6 @@
 
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
-
-
 
 ## Testing
 
@@ -116,8 +111,6 @@
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
 
-
-
 ## Package Management
 
 - `// Upgrade my linter and autofix breaking config changes`
@@ -134,8 +127,6 @@
 
 - `// Set up Renovate or Dependabot for auto-updates`
   <sub>Best for active projects with CI/CD.</sub>
-
-
 
 ## AI-Native Tasks
 
@@ -160,8 +151,6 @@
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
 
-
-
 ## Context
 
 - `// Write a status update based on recent commits`
@@ -169,8 +158,6 @@
 
 - `// Summarize all changes in the last 7 days`
   <sub>Catching up after time off.</sub>
-
-
 
 ## Fun & Experimental
 
@@ -209,11 +196,9 @@
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
 
-
-
 ## Contributing
 
 Your contributions are welcome! Add new prompts, fix formatting, or suggest categories.
 
 - 📄 [Contributing Guide](contributing.md)
-- 🪄 Open a [Pull Request](https://github.com/YOUR_REPO/pulls)
+- 🪄 Open a [Pull Request](https://github.com/Roanco/jules-awesome-list/pulls)
