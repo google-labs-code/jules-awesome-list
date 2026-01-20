@@ -1,0 +1,86 @@
+Vercel CLI 50.4.5
+Retrieving project…
+Deploying cozmoz01s-projects/hack-rust-v2
+Uploading [--------------------] (0.0B/150.6KB)
+Uploading [=====---------------] (39.4KB/150.6KB)
+Uploading [==========----------] (75.6KB/150.6KB)
+Uploading [===============-----] (113.2KB/150.6KB)
+Uploading [====================] (150.6KB/150.6KB)
+Inspect: https://vercel.com/cozmoz01s-projects/hack-rust-v2/ERBza3h5HyeY6xpLo9kQLmZs74rc [3s]
+Production: https://hack-rust-v2-juxd45raa-cozmoz01s-projects.vercel.app [3s]
+Building...
+Building...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Skipping build cache, deployment was triggered without cache.
+Building: Downloading 81 deployment files...
+Building: Running "vercel build"
+Building: Vercel CLI 50.4.5
+Building: Running "install" command: `npm install`...
+Building: > jules-rust-app@0.1.0 postinstall
+Building: > prisma generate
+Building: Loaded Prisma config from prisma.config.ts.
+Building: Prisma schema loaded from prisma/schema.prisma.
+Building: ✔ Generated Prisma Client (v7.2.0) to ./node_modules/@prisma/client in 84ms
+Building: Start by importing your Prisma Client (See: https://pris.ly/d/importing-client)
+Building: Tip: Want to turn off tips and other hints? https://pris.ly/tip-4-nohints
+Building: added 536 packages, and audited 537 packages in 22s
+Building: 217 packages are looking for funding
+Building: run `npm fund` for details
+Building: 3 high severity vulnerabilities
+Building: To address all issues (including breaking changes), run:
+Building: npm audit fix --force
+Building: Run `npm audit` for details.
+Building: Detected Next.js version: 15.5.9
+Building: Running "next build"
+Building: Attention: Next.js now collects completely anonymous telemetry regarding usage.
+Building: This information is used to shape Next.js' roadmap and prioritize features.
+Building: You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+Building: https://nextjs.org/telemetry
+Building: ▲ Next.js 15.5.9
+Building: - Environments: .env
+Building: Creating an optimized production build ...
+Building: ✓ Compiled successfully in 12.6s
+Building: Linting and checking validity of types ...
+Building: Collecting page data ...
+Building: Generating static pages (0/18) ...
+Building: Generating static pages (4/18)
+Building: Generating static pages (8/18)
+Building: Generating static pages (13/18)
+Building: ✓ Generating static pages (18/18)
+Building: Finalizing page optimization ...
+Building: Collecting build traces ...
+Building: Route (app)                                 Size  First Load JS
+Building: ┌ ○ /                                    5.59 kB         161 kB
+Building: ├ ○ /_not-found                            996 B         103 kB
+Building: ├ ○ /ai-math                             2.95 kB         108 kB
+Building: ├ ƒ /api/ai-tutor                          126 B         102 kB
+Building: ├ ƒ /api/summarize-class                   126 B         102 kB
+Building: ├ ○ /congrats                             2.1 kB         108 kB
+Building: ├ ○ /contact                             1.56 kB         104 kB
+Building: ├ ○ /demo                                2.02 kB         115 kB
+Building: ├ ○ /docs                                1.81 kB         124 kB
+Building: ├ ○ /ide                                  2.9 kB         125 kB
+Building: ├ ○ /learn                               2.35 kB         130 kB
+Building: ├ ƒ /learn/[slug]                        41.2 kB         180 kB
+Building: ├ ○ /login                               2.65 kB         105 kB
+Building: ├ ○ /party-hacker                        3.01 kB         150 kB
+Building: ├ ○ /profile                              3.5 kB         111 kB
+Building: └ ○ /teacher                             3.37 kB         105 kB
+Building: + First Load JS shared by all             102 kB
+Building: ├ chunks/493-52548a022eb6d2c8.js       45.9 kB
+Building: ├ chunks/4bd1b696-c023c6e3521b1417.js  54.2 kB
+Building: └ other shared chunks (total)          1.94 kB
+Building: ○  (Static)   prerendered as static content
+Building: ƒ  (Dynamic)  server-rendered on demand
+Building: Traced Next.js server files in: 65.588ms
+Building: Created all serverless functions in: 259.536ms
+Building: Collected static files (public/, static/, .next/static): 11.283ms
+Building: Build Completed in /vercel/output [56s]
+Building: Deploying outputs...
+Building: Deployment completed
+Building: Creating build cache...
+[2K[1A[2K[GProduction: https://hack-rust-v2-juxd45raa-cozmoz01s-projects.vercel.app [1m]
+Completing...
+Aliased: https://hack-rust-v2.vercel.app [1m]

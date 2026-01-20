@@ -1,0 +1,293 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@media (pointer: fine) {
+
+  html,
+  body,
+  button,
+  a {
+    cursor: url('/assets/ufo_emoji.svg') 32 32, auto !important;
+  }
+}
+
+
+:root {
+  --background: #1D0245;
+  --foreground: #ffffff;
+  --accent-pink: #FF69B4;
+  /* Now Orange */
+  --accent-cyan: #00f5ff;
+  --accent-yellow: #ebd401;
+  --accent-orange: #FF9F1C;
+  --accent-purple: #7e50a3;
+  --code-bg: #10002b;
+
+  /* Flow Party Colors */
+  --flow-blue: #2934D0;
+  --flow-green: #17E668;
+  --flow-pink: #FF55B0;
+  --flow-black: #121212;
+
+  /* Nanobanana Theme */
+  --nano-blue: #2934D0;
+  --nano-green: #00FF41;
+  --nano-pink: #FF00E6;
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent-pink: var(--accent-pink);
+  --color-accent-cyan: var(--accent-cyan);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-purple: var(--accent-purple);
+  --color-code-bg: var(--code-bg);
+  --font-mono: var(--font-roboto-mono);
+  --font-unbounded: var(--font-unbounded);
+  --color-flow-blue: var(--flow-blue);
+  --color-flow-green: var(--flow-green);
+  --color-flow-pink: var(--flow-pink);
+  --color-flow-black: var(--flow-black);
+  --color-nano-blue: var(--nano-blue);
+  --color-nano-green: var(--nano-green);
+  --color-nano-pink: var(--nano-pink);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-roboto-mono), monospace;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #10002b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-pink);
+  border-radius: 0px;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@layer utilities {
+  .text-shadow-glow {
+    text-shadow: 0 0 10px currentColor;
+  }
+
+  .box-shadow-glow {
+    box-shadow: 0 0 15px currentColor;
+  }
+
+  .pixelated {
+    image-rendering: pixelated;
+  }
+
+  .text-stroke-1 {
+    -webkit-text-stroke: 1px;
+  }
+
+  .text-stroke-white {
+    -webkit-text-stroke-color: rgba(255, 255, 255, 0.5);
+    color: transparent;
+  }
+}
+
+/* Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* PrismJS Syntax Highlighting Overrides */
+code[class*="language-"],
+pre[class*="language-"] {
+  text-shadow: none !important;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6272a4;
+}
+
+.token.punctuation {
+  color: #f8f8f2;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: var(--accent-pink);
+  /* Pink */
+}
+
+.token.boolean,
+.token.number {
+  color: #bd93f9;
+  /* Purple */
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #50fa7b;
+  /* Green */
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #8be9fd;
+  /* Cyan */
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #50fa7b;
+  /* Green */
+}
+
+.token.keyword {
+  color: var(--accent-cyan);
+  /* Cyan */
+}
+
+
+/* Roaming Alien Animation */
+@keyframes roam {
+  0% {
+    left: -100px;
+    transform: scaleX(1);
+    /* Running right */
+  }
+
+  49% {
+    left: 100vw;
+    transform: scaleX(1);
+  }
+
+  50% {
+    left: 100vw;
+    transform: scaleX(-1);
+    /* Turn around */
+  }
+
+  99% {
+    left: -100px;
+    transform: scaleX(-1);
+  }
+
+  100% {
+    left: -100px;
+    transform: scaleX(1);
+  }
+}
+
+
+/* Fluid Text Animation */
+@keyframes fluid {
+
+  0%,
+  100% {
+    background-position: 0% 50%;
+    transform: translateY(0) skewY(0deg);
+  }
+
+  25% {
+    transform: translateY(-2px) skewY(1deg);
+  }
+
+  50% {
+    background-position: 100% 50%;
+    transform: translateY(0) skewY(0deg);
+  }
+
+  75% {
+    transform: translateY(2px) skewY(-1deg);
+  }
+}
+
+.fluid-hover:hover {
+  animation: fluid 1s infinite linear;
+  background-size: 200% auto;
+}
+
+@keyframes fly-by-left {
+  0% {
+    transform: translateX(110vw) rotate(0deg);
+  }
+
+  100% {
+    transform: translateX(-20vw) rotate(360deg);
+  }
+}
+
+.animate-fly-by {
+  animation: fly-by-left linear infinite;
+}
+
+/* Slide Up Animation */
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out forwards;
+}

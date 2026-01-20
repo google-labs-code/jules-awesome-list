@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  purchases Purchase[]
+  slideshowEvents SlideshowEvent[]
+}
+
+model Purchase {
+  id        String   @id @default(cuid())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+  bundleId  String
+  amount    Float
+  currency  String   @default("USD")
+  status    String   @default("COMPLETED")
+  createdAt DateTime @default(now())
+}
+
+model TeacherScore {
+  id          String   @id @default(cuid())
+  teacherName String
+  score       Int
+  reason      String?
+  createdAt   DateTime @default(now())
+}
+
+model SlideshowEvent {
+  id        String   @id @default(cuid())
+  eventType String   // e.g., "VIEW", "COMPLETE", "SCROLL_START"
+  timestamp DateTime @default(now())
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id])
+}

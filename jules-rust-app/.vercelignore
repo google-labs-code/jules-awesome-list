@@ -1,0 +1,11 @@
+node_modules
+.next
+.git
+.env
+.env.local
+.vercel
+package-lock 2.json
+node_modules_old
+deployment_error.log
+error.txt
+*.tsbuildinfo

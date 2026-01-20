@@ -1,0 +1,43 @@
+{
+  "name": "jules-rust-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "lint": "eslint",
+    "postinstall": "echo 'Skipping postinstall'"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@gsap/react": "^2.1.2",
+    "@prisma/client": "^7.2.0",
+    "@vercel/speed-insights": "^1.1.0",
+    "ai": "^6.0.39",
+    "client-only": "^0.0.1",
+    "gsap": "^3.14.2",
+    "lucide-react": "^0.562.0",
+    "next": "^15.5.9",
+    "prismjs": "^1.29.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-markdown": "^9.0.1",
+    "react-simple-code-editor": "^0.14.1"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.3",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@tailwindcss/typography": "^0.5.19",
+    "@types/node": "^20.17.0",
+    "@types/prismjs": "^1.26.5",
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.1",
+    "eslint": "^9.17.0",
+    "eslint-config-next": "15.3.8",
+    "prisma": "^7.2.0",
+    "tailwindcss": "^4.0.0",
+    "ts-node": "^1.7.1",
+    "typescript": "^5.7.0"
+  }
+}
