@@ -216,4 +216,4 @@
 Your contributions are welcome! Add new prompts, fix formatting, or suggest categories.
 
 - 📄 [Contributing Guide](contributing.md)
-- 🪄 Open a [Pull Request](https://github.com/YOUR_REPO/pulls)
+- 🪄 Open a [Pull Request](https://github.com/google-labs-code/jules-awesome-list/pulls)
