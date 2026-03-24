@@ -51,7 +51,8 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
-
+- [Scheduled Rot-Hunting Agent](prompts/scrutineer-scheduled.md)
+  <sub>Works together with pre-defined scheduled agents to keep the code healthy.</sub>
 
 ## Debugging
 
