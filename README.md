@@ -211,6 +211,7 @@
 
 
 
+- [guardian-agent-prompts](https://github.com/milkomida77/guardian-agent-prompts) - 49 production-tested AI agent system prompts for Claude Code multi-agent orchestration with task registry and quality gates. MIT licensed.
 ## Contributing
 
 Your contributions are welcome! Add new prompts, fix formatting, or suggest categories.
