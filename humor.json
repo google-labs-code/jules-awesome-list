@@ -1,0 +1,36 @@
+{
+  "jokes": [
+    {
+      "joke": "Why did the scarecrow win an award?",
+      "punchline": "Because he was outstanding in his field."
+    },
+    {
+      "joke": "What do you call fake spaghetti?",
+      "punchline": "An impasta."
+    },
+    {
+      "joke": "Why don't skeletons fight each other?",
+      "punchline": "They don't have the guts."
+    }
+  ],
+  "poems": [
+    {
+      "title": "Roses are Red",
+      "author": "Traditional",
+      "lines": [
+        "Roses are red,",
+        "Violets are blue,",
+        "Sugar is sweet,",
+        "And so are you."
+      ]
+    },
+    {
+      "title": "The Road Not Taken (Excerpt)",
+      "author": "Robert Frost",
+      "lines": [
+        "Two roads diverged in a yellow wood,",
+        "And sorry I could not travel both"
+      ]
+    }
+  ]
+}
