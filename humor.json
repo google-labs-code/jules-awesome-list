@@ -39,6 +39,31 @@
         "Two roads diverged in a yellow wood,",
         "And sorry I could not travel both"
       ]
+    },
+    {
+      "title": "Ozymandias",
+      "author": "Percy Bysshe Shelley",
+      "lines": [
+        "I met a traveller from an antique land,",
+        "Who said: Two vast and trunkless legs of stone",
+        "Stand in the desert."
+      ]
+    },
+    {
+      "title": "Daffodils",
+      "author": "William Wordsworth",
+      "lines": [
+        "I wandered lonely as a cloud",
+        "That floats on high o'er vales and hills,"
+      ]
+    },
+    {
+      "title": "Fire and Ice",
+      "author": "Robert Frost",
+      "lines": [
+        "Some say the world will end in fire,",
+        "Some say in ice."
+      ]
     }
   ]
 }
