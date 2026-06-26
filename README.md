@@ -24,6 +24,7 @@
 - [Context](#context)
 - [Fun \& Experimental](#fun--experimental)
 - [Start from Scratch](#start-from-scratch)
+- [Security](#security)
 - [Contributing](#contributing)
 
 ---
@@ -208,6 +209,19 @@
 
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
+
+
+
+## Security
+
+- `// Scan this file for common security vulnerabilities (e.g., SQL injection, XSS)...`
+  <sub>Identify and fix security flaws in backend endpoints or frontend inputs.</sub>
+
+- `// Check my dependency tree for known CVEs...`
+  <sub>Audit node_modules or Python dependencies for known exploits.</sub>
+
+- `// Configure least-privilege IAM roles for this service...`
+  <sub>Cloud infra provisioning scripts and deployment manifests.</sub>
 
 
 
