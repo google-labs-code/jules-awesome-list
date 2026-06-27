@@ -23,6 +23,7 @@
 - [AI-Native Tasks](#ai-native-tasks)
 - [Context](#context)
 - [Fun \& Experimental](#fun--experimental)
+- [Protocol Security \& Release](#protocol-security--release)
 - [Start from Scratch](#start-from-scratch)
 - [Contributing](#contributing)
 
@@ -188,6 +189,26 @@
 
 - `// Turn this tool into a GitHub App`
   <sub>Reusable, platform-integrated tools.</sub>
+
+## Protocol Security & Release
+
+- `// Review this Solidity timelock wiring: list every admin path, delay, and who can cancel`
+  <sub>DeFi / DAO repos with governance contracts and timelock modules.</sub>
+
+- `// Produce a pre-mainnet checklist from this contracts folder: deployment order, verifier addresses, and pause controls`
+  <sub>Smart-contract launches on EVM L1/L2 (Ethereum, Arbitrum, Optimism, Sonic).</sub>
+
+- `// Audit this PR for secrets, hardcoded RPC keys, or committed .env artifacts before merge`
+  <sub>Any repo with CI, frontend env vars, or infra scripts.</sub>
+
+- `// Summarize breaking ABI changes between these two contract versions for integrators`
+  <sub>Protocol SDKs, subgraph indexers, and dApp frontends.</sub>
+
+- `// Draft release notes from commits since the last tag — group by security, breaking, and feature`
+  <sub>Open-source protocols preparing a tagged release.</sub>
+
+- `// Find gas hotspots in this Solidity file and suggest minimal-diff optimizations under 50 lines changed`
+  <sub>On-chain automation, routers, and pool contracts.</sub>
 
 ## Start from Scratch
 
