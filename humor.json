@@ -1,69 +1,85 @@
-{
-  "jokes": [
-    {
-      "joke": "Why did the scarecrow win an award?",
-      "punchline": "Because he was outstanding in his field."
-    },
-    {
-      "joke": "Why did the bicycle fall over?",
-      "punchline": "Because it was two-tired."
-    },
-    {
-      "joke": "Why don't scientists trust atoms?",
-      "punchline": "Because they make up everything!"
-    },
-    {
-      "joke": "What do you call a bear with no teeth?",
-      "punchline": "A gummy bear!"
-    },
-    {
-      "joke": "What do you call cheese that isn't yours?",
-      "punchline": "Nacho cheese."
-    }
-  ],
-  "poems": [
-    {
-      "title": "Roses are Red",
-      "author": "Traditional",
-      "lines": [
-        "Roses are red,",
-        "Violets are blue,",
-        "Sugar is sweet,",
-        "And so are you."
-      ]
-    },
-    {
-      "title": "The Road Not Taken (Excerpt)",
-      "author": "Robert Frost",
-      "lines": [
-        "Two roads diverged in a yellow wood,",
-        "And sorry I could not travel both"
-      ]
-    },
-    {
-      "title": "Ozymandias",
-      "author": "Percy Bysshe Shelley",
-      "lines": [
-        "I met a traveller from an antique land,",
-        "Who said: Two vast and trunkless legs of stone",
-        "Stand in the desert."
-      ]
-    },
-    {
-      "title": "Daffodils",
-      "author": "William Wordsworth",
-      "lines": [
-        "I wandered lonely as a cloud",
-        "That floats on high o'er vales and hills,"
-      ]
-    },
-    {
-      "title": "Fire and Ice",
-      "author": "Robert Frost",
-      "lines": [
-        "Some say the world will end in fire,",
-        "Some say in ice."
-      ]
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "type": "joke",
+    "setup": "Why did the scarecrow win an award?",
+    "punchline": "Because he was outstanding in his field."
+  },
+  {
+    "id": 2,
+    "type": "joke",
+    "setup": "Why did the bicycle fall over?",
+    "punchline": "Because it was two-tired."
+  },
+  {
+    "id": 3,
+    "type": "joke",
+    "setup": "Why don't scientists trust atoms?",
+    "punchline": "Because they make up everything!"
+  },
+  {
+    "id": 4,
+    "type": "joke",
+    "setup": "What do you call a bear with no teeth?",
+    "punchline": "A gummy bear!"
+  },
+  {
+    "id": 5,
+    "type": "joke",
+    "setup": "What do you call cheese that isn't yours?",
+    "punchline": "Nacho cheese."
+  },
+  {
+    "id": 6,
+    "type": "poem",
+    "title": "Roses are Red",
+    "author": "Traditional",
+    "lines": [
+      "Roses are red,",
+      "Violets are blue,",
+      "Sugar is sweet,",
+      "And so are you."
+    ]
+  },
+  {
+    "id": 7,
+    "type": "poem",
+    "title": "The Road Not Taken (Excerpt)",
+    "author": "Robert Frost",
+    "lines": [
+      "Two roads diverged in a yellow wood,",
+      "And sorry I could not travel both"
+    ]
+  },
+  {
+    "id": 8,
+    "type": "poem",
+    "title": "Ozymandias",
+    "author": "Percy Bysshe Shelley",
+    "lines": [
+      "I met a traveller from an antique land,",
+      "Who said: Two vast and trunkless legs of stone",
+      "Stand in the desert."
+    ]
+  },
+  {
+    "id": 9,
+    "type": "poem",
+    "title": "Daffodils",
+    "author": "William Wordsworth",
+    "lines": [
+      "I wandered lonely as a cloud",
+      "That floats on high o'er vales and hills,"
+    ]
+  },
+  {
+    "id": 10,
+    "type": "poem",
+    "title": "Fire and Ice",
+    "author": "Robert Frost",
+    "lines": [
+      "Some say the world will end in fire,",
+      "Some say in ice."
+    ]
+  }
+]
