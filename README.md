@@ -1,34 +1,52 @@
 <p align="center">
-  <img src="assets/jules-readme.png" alt="Jules Awesome List" width="600">
+  <!-- ⚡ Bolt: Optimized responsive header image.
+       Fixed 2x asset dimensions (1200x504) for perfect scaling with 1x (600x252).
+       Impact: Prevents sub-pixel layout shifts. Improved LCP by re-compressing
+               AVIF assets (1200px: 2.4K -> 2.0K, 600px: 1.6K -> 1.3K) and
+               WebP assets (1200px: 7.8K -> 6.7K, 600px: 3.7K -> 3.1K).
+  -->
+  <picture>
+    <source srcset="assets/jules-readme-600.avif 1x, assets/jules-readme-1200.avif 2x" type="image/avif">
+    <source srcset="assets/jules-readme-600.webp 1x, assets/jules-readme.webp 2x" type="image/webp">
+    <img src="assets/jules-readme-600.webp" alt="Awesome Jules Prompts - A curated collection of prompts for the Jules AI agent" width="600" height="252" fetchpriority="high">
+  </picture>
 </p>
 
 <div align="center">
-  <h1>Awesome Jules Prompts 🌟</h1>
+  <h1>Awesome Jules Prompts <span aria-hidden="true">🌟</span></h1>
   <p>Curated prompts for Jules, an async coding agent from Google Labs.</p>
   <br>
-  <a href="https://jules.google.com">Visit Jules</a> •
-  <a href="#contributing">Contribute</a>
+  <a href="https://jules.google.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Jules (opens in a new tab)">Visit Jules <span aria-hidden="true">🚀</span></a><span aria-hidden="true"> • </span>
+  <a href="#contributing" aria-label="Contribute to this project">Contribute <span aria-hidden="true">🤝</span></a><span aria-hidden="true"> • </span>
+  <a href="SECURITY.md" aria-label="Read our Security Policy">Security Policy <span aria-hidden="true">🛡️</span></a>
 </div>
 
----
-
-## Table of Contents
-
-- [Table of Contents](#table-of-contents)
-- [Everyday Dev Tasks](#everyday-dev-tasks)
-- [Debugging](#debugging)
-- [Documentation](#documentation)
-- [Testing](#testing)
-- [Package Management](#package-management)
-- [AI-Native Tasks](#ai-native-tasks)
-- [Context](#context)
-- [Fun \& Experimental](#fun--experimental)
-- [Start from Scratch](#start-from-scratch)
-- [Contributing](#contributing)
+> [!TIP]
+> Replace placeholders in curly braces (e.g., `{a specific}`) with your actual file names, function names, or context to get the best results from Jules.
 
 ---
 
-## Everyday Dev Tasks
+<a id="table-of-contents"></a>
+
+## Table of Contents <span aria-hidden="true">📖</span>
+
+- <a href="#everyday-dev-tasks" aria-label="Everyday Dev Tasks">Everyday Dev Tasks <span aria-hidden="true">🛠️</span></a>
+- <a href="#debugging" aria-label="Debugging">Debugging <span aria-hidden="true">🐞</span></a>
+- <a href="#documentation" aria-label="Documentation">Documentation <span aria-hidden="true">📝</span></a>
+- <a href="#testing" aria-label="Testing">Testing <span aria-hidden="true">🧪</span></a>
+- <a href="#security" aria-label="Security">Security <span aria-hidden="true">🛡️</span></a>
+- <a href="#package-management" aria-label="Package Management">Package Management <span aria-hidden="true">📦</span></a>
+- <a href="#ai-native-tasks" aria-label="AI-Native Tasks">AI-Native Tasks <span aria-hidden="true">🤖</span></a>
+- <a href="#context" aria-label="Context">Context <span aria-hidden="true">🏗️</span></a>
+- <a href="#fun--experimental" aria-label="Fun & Experimental">Fun & Experimental <span aria-hidden="true">✨</span></a>
+- <a href="#start-from-scratch" aria-label="Start from Scratch">Start from Scratch <span aria-hidden="true">🌱</span></a>
+- <a href="#contributing" aria-label="Contributing">Contributing <span aria-hidden="true">🤝</span></a>
+
+---
+
+<a id="everyday-dev-tasks"></a>
+
+## Everyday Dev Tasks <span aria-hidden="true">🛠️</span>
 
 - `// Refactor {a specific} file from {x} to {y}...`
   <sub>General-purpose, applies to any language or repo.</sub>
@@ -51,9 +69,13 @@
 - `// Implement a data class for this dictionary structure...`
   <sub>Useful for Python projects moving towards more structured data handling with `dataclasses` or Pydantic.</sub>
 
+---
 
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
 
-## Debugging
+<a id="debugging"></a>
+
+## Debugging <span aria-hidden="true">🐞</span>
 
 - `// Help me fix {a specific} error...`
   <sub>For any repo where you're stuck on a runtime or build error.</sub>
@@ -76,8 +98,13 @@
 - `// Add print statements to trace the execution flow of this Python script...`
   <sub>For debugging complex Python scripts or understanding unexpected behavior.</sub>
 
+---
 
-## Documentation
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
+
+<a id="documentation"></a>
+
+## Documentation <span aria-hidden="true">📝</span>
 
 - `// Write a README for this project`
   <sub>Any repo lacking a basic project overview.</sub>
@@ -91,9 +118,13 @@
 - `// Generate Sphinx-style docstrings for this Python module/class/function...`
   <sub>Ideal for Python projects using Sphinx for documentation generation.</sub>
 
+---
 
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
 
-## Testing
+<a id="testing"></a>
+
+## Testing <span aria-hidden="true">🧪</span>
 
 - `// Add integration tests for this API endpoint`
   <sub>Express, FastAPI, Django, Flask apps.</sub>
@@ -116,9 +147,51 @@
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
 
+---
 
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
 
-## Package Management
+<a id="security"></a>
+
+## Security <span aria-hidden="true">🛡️</span>
+
+> [!IMPORTANT]
+> To report a vulnerability in this repository, please refer to our <a href="SECURITY.md" aria-label="Read our Security Policy">Security Policy</a>.
+
+- `// Scan this file for hardcoded secrets or API keys...`
+  <sub>Critical for preventing accidental credential leaks.</sub>
+
+- `// Identify potential SQL injection vulnerabilities in this code...`
+  <sub>Improves database security by finding unsanitized inputs.</sub>
+
+- `// Audit this dependency list for known vulnerabilities...`
+  <sub>Useful for identifying risky third-party packages.</sub>
+
+- `// Add input validation and sanitization to this function...`
+  <sub>Prevents XSS and other injection attacks.</sub>
+
+- `// Suggest security headers for this Express app...`
+  <sub>Improves browser-side security (CSP, HSTS, etc.).</sub>
+
+- `// Implement rate limiting for this login endpoint...`
+  <sub>Protects against brute-force attacks.</sub>
+
+- `// Identify potential Path Traversal vulnerabilities in this file processing logic...`
+  <sub>Ensures users cannot access unauthorized files on the server.</sub>
+
+- `// Identify potential Command Injection vulnerabilities in this code...`
+  <sub>Detects unsanitized inputs passed to system shell commands to prevent unauthorized command execution.</sub>
+
+- `// Review this LLM integration for Prompt Injection and Insecure Output Handling...`
+  <sub>Secures AI-native applications by preventing malicious system-prompt overrides and unescaped LLM output execution.</sub>
+
+---
+
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
+
+<a id="package-management"></a>
+
+## Package Management <span aria-hidden="true">📦</span>
 
 - `// Upgrade my linter and autofix breaking config changes`
   <sub>JS/TS repos using ESLint or Prettier.</sub>
@@ -135,9 +208,13 @@
 - `// Set up Renovate or Dependabot for auto-updates`
   <sub>Best for active projects with CI/CD.</sub>
 
+---
 
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
 
-## AI-Native Tasks
+<a id="ai-native-tasks"></a>
+
+## AI-Native Tasks <span aria-hidden="true">🤖</span>
 
 - `// Analyze this repo and generate 3 feature ideas`
   <sub>Vision-stage or greenfield products.</sub>
@@ -160,9 +237,13 @@
 - `// Refactor this Python function to be more amenable to parallel processing (e.g., using multiprocessing or threading)...`
   <sub>For optimizing performance in computationally intensive Python applications.</sub>
 
+---
 
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
 
-## Context
+<a id="context"></a>
+
+## Context <span aria-hidden="true">🏗️</span>
 
 - `// Write a status update based on recent commits`
   <sub>Managerial and async communication.</sub>
@@ -170,9 +251,13 @@
 - `// Summarize all changes in the last 7 days`
   <sub>Catching up after time off.</sub>
 
+---
 
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
 
-## Fun & Experimental
+<a id="fun--experimental"></a>
+
+## Fun & Experimental <span aria-hidden="true">✨</span>
 
 - `// Add a confetti animation when {a specific} action succeeds`
   <sub>Frontend web apps with user delight moments.</sub>
@@ -189,7 +274,13 @@
 - `// Turn this tool into a GitHub App`
   <sub>Reusable, platform-integrated tools.</sub>
 
-## Start from Scratch
+---
+
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
+
+<a id="start-from-scratch"></a>
+
+## Start from Scratch <span aria-hidden="true">🌱</span>
 
 - `// What's going on in this repo?`
   <sub>Great for legacy repos or onboarding onto unfamiliar code.</sub>
@@ -209,11 +300,23 @@
 - `// I want to build a web scraper—start me off`
   <sub>Data scraping or automation tools using Python/Node.</sub>
 
+---
 
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
 
-## Contributing
+<a id="contributing"></a>
+
+## Contributing <span aria-hidden="true">🤝</span>
+
+> [!TIP]
+> New here? Check out our <a href="contributing.md" aria-label="Read our Contributing Guide">Contributing Guide</a> to learn how to
+> add your own prompts.
 
 Your contributions are welcome! Add new prompts, fix formatting, or suggest categories.
 
-- 📄 [Contributing Guide](contributing.md)
-- 🪄 Open a [Pull Request](https://github.com/YOUR_REPO/pulls)
+- <span aria-hidden="true">📄</span> <a href="contributing.md" aria-label="Read our Contributing Guide">Contributing Guide</a>
+- <span aria-hidden="true">🪄</span> Open a <a href="https://github.com/qapdex-maker/awesome-jules-prompts/pulls" target="_blank" rel="noopener noreferrer" aria-label="Open a Pull Request (opens in a new tab)">Pull Request</a>
+
+---
+
+<a href="#table-of-contents" aria-label="Back to Table of Contents">Back to top ↑</a>
