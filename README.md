@@ -113,6 +113,9 @@
 - `// Write a test to ensure backward compatibility for this function`
   <sub>Library or SDK maintainers.</sub>
 
+- `// Add an Agent QA natural-language regression suite for this web app's critical user journey and document how to run it...`
+  <sub>[Agent QA](https://github.com/vostride/agent-qa) - External black-box UI test harness used alongside code-level tests.</sub>
+
 - `// Write a Pytest fixture to mock this external API call...`
   <sub>For Python projects using Pytest and needing robust mocking for testing.</sub>
 
